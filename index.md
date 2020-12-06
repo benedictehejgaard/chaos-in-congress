@@ -12,6 +12,10 @@ On this website, we wish to give you an overview of the voting patterns in the U
 
 **Intrigued? Keep on reading for insights on our findings!** 
 
+## Navigating the page 
+1. [Context and termonology](## Context and termonology)
+2. [Findings](## Findings)
+
 ## Context and termonology
 Before we get started with the results, we realize not everyone is an expert in the US Congress. If you are, you can skip this section. 
 
