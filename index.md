@@ -13,7 +13,7 @@ On this website, we wish to give you an overview of the voting patterns in the U
 **Intrigued? Keep on reading for insights on our findings!** 
 
 ## Findings
-
+We have nothing 
 ## The Data Used 
 
 ## The Network Analysis 
