@@ -24,5 +24,5 @@ We have nothing
 Links to data
 
 ## Where do I find the master notebook that rigurously explains this entire analysis? 
-Links to master notebook
+[master notebook](https://github.com/benedictehejgaard/chaos-in-congress/blob/gh-pages/WebsiteTest.ipynb)
 
