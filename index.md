@@ -14,7 +14,7 @@ On this website, we wish to give you an overview of the voting patterns in the U
 
 ## Navigating the page 
 1. [Context and termonology](#Context and termonology)
-2. [Findings](#Findings)
+2. [Findings](https://github.com/benedictehejgaard/chaos-in-congress/blob/gh-pages/index.md#findings)
 3. [Data Used](#The Data Used) 
 4. [Network Analysis](#Network Analysis) (advanced)
 5. [Text Analysis](#Text Analysis) (advanced)
