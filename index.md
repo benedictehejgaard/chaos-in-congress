@@ -19,18 +19,38 @@ We have nothing
 ## The Data Used 
 
 If you wish to dive deeper into the analyses behind these findings, you will first need some data. In order to carry out these investigations, you will need four datasets: 
-* one
-* two
-* three
-* four 
+* Congress_110_116: Congress Member Data
+* roll_info: Roll Call Data
+* issue_info: The summary for each bill/issue
+* roll_call_vote: The result of each Roll Call voting round 
 
 Each of these datasets contain data from the [US Congress Website](www.congress.gov). If you are curious to know exactly how we got the data, you can find a more throrough walk-through in the !!!TODO NOTEBOOK!. 
 
-### roll_info: Roll Call Data
+#### Congress_110_116: Congress Member Data
 
 Insert section from notbook. 
 
 ![image](Images/roll_info.png)
+
+#### roll_info: Roll Call Data
+
+Insert section from notbook. 
+
+![image](Images/roll_info.png)
+
+#### issue_info: The summary for each bill/issue
+
+Insert section from notbook. 
+
+![image](Images/roll_info.png)
+
+#### roll_call_vote: The result of each Roll Call voting round
+
+Insert section from notbook. 
+
+![image](Images/roll_info.png)
+
+
 
 ## The Network Analysis 
 
