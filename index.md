@@ -92,7 +92,12 @@ We remove all the Roll Calls that were not the latest roll call for a bill, so t
 
 After data cleaning, this dataset has the shape: Members (rows), Roll Calls (cols) = (916, 3082).
 
-## Description of the Dataset
+## Basic Statistics
+When diving into the data, we quickly realize that voting pattern for each member varies greatly. Not all members vote for at each roll call. Furthermore, for the majority of the votes it is evident that the representatives either completely disagree (avg. vote around 0.5) or completely agree (avg. vote around 0.9-1.0). Some bills have an average of 1.0, meaning each voting representative has voted to pass the bill. 
+
+The majority vote in the House of Representatives can play a major role in the outcome of a roll call. In the plot below, we have displayed the distribution of the representatives among the two parties:
+
+
 
 
 ## The Network Analysis 
