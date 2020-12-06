@@ -74,8 +74,14 @@ Insert section from notbook.
 ## Text Analysis 
 
 ## Where do I find the data?
-Links to data
+The four datasets used for the analyses can be downloaded below: 
+* Link to dataset
+* Link to dataset
+* Link to dataset
+* Link to dataset
+
+TODO maybe add source?
 
 ## Where do I find the master notebook that rigurously explains this entire analysis? 
-[master notebook](https://nbviewer.jupyter.org/github/benedictehejgaard/chaos-in-congress/blob/gh-pages/WebsiteTest.ipynb)
+A full description of the entire analysis can be retrieved [here](https://nbviewer.jupyter.org/github/benedictehejgaard/chaos-in-congress/blob/gh-pages/WebsiteTest.ipynb). 
 
