@@ -4,17 +4,33 @@ With the 2020 US election being close to finished, we once again find ourselves 
 
 On this website, we wish to give you an overview of the voting patterns in the US House of Representatives, and how it has changed over the past 13 years. In the bottom of the page, we will take you through a brief overview of how we found and processed the data, so you have the opportunity to become a US-Congress-Data-Master yourself when you are done reading this website. If you are not interested in the data, and solemnly want to know if there is chaos in congress or not, you can stop before the analysis section and stick to the visual representations of the analyses. Regardless of your technical interest, this website will provide you with answers to questions like: 
 
-- Is there chaos in congress? 
-- Does polarization exist, and to what degree do the members agree with each other – and what do they agree on? 
-- How does this look internally in each party, and between the parties as well? 
-- We would perhaps assume that we can put the two parties into two distinct boxes, but is this really true? 
+- Does polarization exist, and to what degree do the members agree with each other?
+- Would a network divide the members into communities corresponding to their political party?
+- What subjects separates communities in the House of Representatives? 
 - And has this changed over time?
+
 
 **Intrigued? Keep on reading for insights on our findings!** 
 
 ## Findings
 We have nothing 
+
+
 ## The Data Used 
+
+If you wish to dive deeper into the analyses behind these findings, you will first need some data. In order to carry out these investigations, you will need four datasets: 
+* one
+* two
+* three
+* four 
+
+Each of these datasets contain data from the [US Congress Website](www.congress.gov). If you are curious to know exactly how we got the data, you can find a more throrough walk-through in the !!!TODO NOTEBOOK!. 
+
+### roll_info: Roll Call Data
+
+Insert section from notbook. 
+
+![image](Images/roll_info.png)
 
 ## The Network Analysis 
 
