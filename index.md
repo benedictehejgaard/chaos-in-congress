@@ -42,6 +42,9 @@ Below, you will find a simple overview of the above described termology:
 ## Findings
 We have nothing 
 
+**Start of the Technical Part of the Notebook**
+___
+
 
 ## The Data Used 
 
