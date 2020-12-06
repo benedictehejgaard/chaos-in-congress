@@ -114,7 +114,18 @@ We see that most bills fall to the shorter end of the scale (notice the log-scal
 Further basic statistics as well as a walk-through of how these were found can be found in the explainer notebook at the bottom of the page. 
 
 
-## The Network Analysis 
+## Network Analysis 
+
+### Step 1 - Building the Network 
+
+Before we are able to test our hypotheses, we have to built a network. As previously mentioned, we wish to create a network of representatives, connected by the rolls they have voted for. We have tested several heuristics to achieve this goal, however first the data was manipulated to a desirable format to construct the edges. Namely, we are interested in constructing node-pairs and counting how often they agree/disagree on bills in the following ways:
+
+* Agree yes: Both voting yes
+* Agree no: Both voting no
+* Agree: Total agree yes and agree no
+* Disagree: One yes, one no
+
+In the following, we will take you through a highlevel overview of the network analysis. If you wish to get an in-depth explanation of how this was carried out, along with the sequence of functions that were made to carry it out, you can download the Explainer Notebook below. 
 
 ## Text Analysis 
 
