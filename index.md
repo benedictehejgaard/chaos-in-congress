@@ -14,7 +14,7 @@ On this website, we wish to give you an overview of the voting patterns in the U
 
 ## Findings
 
-## The data used 
+## The Data Used 
 
 ## The Network Analysis 
 
