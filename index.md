@@ -12,6 +12,23 @@ On this website, we wish to give you an overview of the voting patterns in the U
 
 **Intrigued? Keep on reading for insights on our findings!** 
 
+## Context and termonology
+Before we get started with the results, we realize not everyone is an expert in the US Congress. If you are, you can skip this section. 
+
+--insert section from notebook--
+
+Below, you will find a simple overview of the above described termology: 
+
+| Termonology    | Description                                                    |
+|----------------|----------------------------------------------------------------|
+| Representative | A voting member of the House of Representatives                |
+| Term           | The two year period that the representatives are elected for   |
+| Bill/Issue     | The law proposal/amendment that the house votes for            |
+| Bill_ID        | Unique ID for each Bill/Issue                                  |
+| Roll Call      | A round of voting for a bill. There can be multiple per bill.  |
+| Roll_Call_ID   | Unique ID for a roll call.   
+
+
 ## Findings
 We have nothing 
 
