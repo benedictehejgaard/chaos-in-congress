@@ -15,6 +15,12 @@ On this website, we wish to give you an overview of the voting patterns in the U
 ## Navigating the page 
 1. [Context and termonology](#Context and termonology)
 2. [Findings](#Findings)
+3. [Data Used](#The Data Used)
+4. [Network Analysis](#Network Analysis)
+5. [Text Analysis](#Text Analysis) 
+6. [Download the Dataset](#Where do I find the data?)
+7. [Download the Entire Workbook](#Where do I find the master notebook that rigurously explains this entire analysis?)
+
 
 ## Context and termonology
 Before we get started with the results, we realize not everyone is an expert in the US Congress. If you are, you can skip this section. 
