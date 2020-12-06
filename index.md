@@ -15,10 +15,10 @@ On this website, we wish to give you an overview of the voting patterns in the U
 ## Navigating the page 
 1. [Context and termonology](#Context and termonology)
 2. [Findings](#Findings)
-3. [Data Used](#The Data Used)
-4. [Network Analysis](#Network Analysis)
-5. [Text Analysis](#Text Analysis) 
-6. [Download the Dataset](#Where do I find the data?)
+3. [Data Used](#The Data Used) 
+4. [Network Analysis](#Network Analysis) (advanced)
+5. [Text Analysis](#Text Analysis) (advanced)
+6. [Download the Dataset](#Where do I find the data?) 
 7. [Download the Entire Workbook](#Where do I find the master notebook that rigurously explains this entire analysis?)
 
 
@@ -42,9 +42,6 @@ Below, you will find a simple overview of the above described termology:
 ## Findings
 We have nothing 
 
-**Start of the Technical Part of the Notebook**
-___
-
 
 ## The Data Used 
 
@@ -62,24 +59,40 @@ Insert section from notbook.
 
 ![image](Images/Congress_110_116.png)
 
+After cleaning, this dataset has 969 rows, corresponding to 969 members. 
+
 **roll_info: Roll Call Data**
 
 Insert section from notbook. 
 
 ![image](Images/roll_info.png)
 
+We clean the data by removing all entries where either the bill ID or the result of the vote is missing. Furthermore, most bills that are presented in congress will have several votes, and only the latest vote is included in the analysis, such that each bill is represented by a single vote. Furthermore, if these were not removed, identical sumamries may appear in the text analysis which would skew the results. By only focusing on the last vote, we are sure to focus only on the longest and most accurate summary of each bill.
+
+After data cleaning, the final dataset has 3082 Roll Calls and Bills (rows).
+
 **issue_info: The summary for each bill/issue**
 
-Insert section from notbook. 
+Insert section from notebook. 
 
 ![image](Images/issue_info.png)
 
+We clean the data by removing all empty summaries. After data cleaning, the final dataset has 3639 Roll Calls (rows). 
+
 **roll_call_vote: The result of each Roll Call voting round**
 
-Insert section from notbook. 
+Insert section from notebook. 
 
 ![image](Images/roll_call_vote.png)
 
+We remove all the Roll Calls that were not the latest roll call for a bill, so the list of roll calls correspond to the list of roll calls we obtained from the [roll_info](#roll_info: Roll Call Data) data cleaning. Furthermore, we notice there are multiple methods of answering; yes, yea, no, nay, thus the roll call votes are changed to binary. Notice all *not voting* and *NaN* values will be left out of this analysis:
+
+* 1 for 'Yes', 'Yea', and 'Aye'
+* 0 for 'No', and 'Nay'
+
+After data cleaning, this dataset has the shape: Members (rows), Roll Calls (cols) = (916, 3082).
+
+## Description of the Dataset
 
 
 ## The Network Analysis 
