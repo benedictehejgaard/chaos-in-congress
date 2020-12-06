@@ -74,11 +74,7 @@ Insert section from notbook.
 ## Text Analysis 
 
 ## Where do I find the data?
-The four datasets used for the analyses can be downloaded below: 
-* Link to dataset
-* Link to dataset
-* Link to dataset
-* Link to dataset
+The four datasets used for the analyses can be downloaded from our github repository [here](data). 
 
 TODO maybe add source?
 
