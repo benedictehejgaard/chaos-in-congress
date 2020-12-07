@@ -1,4 +1,4 @@
-* TOC
+1. TOC
 {:toc}
 
 # Using Network Analysis and Natural Language Processing to help you understand the US Congress.
