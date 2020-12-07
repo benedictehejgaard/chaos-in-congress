@@ -27,6 +27,7 @@ Before we get started with the results, we realize not everyone is an expert in 
 
 The United States Congress consists of two parts; the house of representatives and the senate. This particular project is solely interested in the house of representatives, which is comprised of 435 members. Each house sits for a 2-year term, after which it is possible to be reelected (as most representatives do). The job of the representatives is to consider bill proposals and amendments in order to introduce new legislation in the United States. Each of these votes is referred to as a roll call and will be uniquely identified by the year and a roll call number (2020-10 will uniquely identify a roll call for example). If a bill is passed in the house of representatives, it is voted on in the senate and finally it is presented to the president. 
 
+
 Below, you will find a simple overview of the above described termology: 
 
 | Termonology    | Description                                                    |
