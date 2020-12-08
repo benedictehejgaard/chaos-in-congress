@@ -160,6 +160,7 @@ We will also use the modularity method as a comparison method between the graph 
 In the tabel below, we have indicated our measures for determining if a partition is good or not. We are basing these numbers off image 9.16 in http://networksciencebook.com/chapter/9#modularity TODO ref. These could also be derived for our example, using the formulas in the same chapter.
 
 | Type                |  Description |
+|---------------------|--------------|
 | Optimal Partition   | Higher modularity implies better partition, as the corresponding community structure is better. The optimal partition is set to 0.4 based on image 9.16 |
 |---------------------|-----------------------------------------|
 | Suboptimal Partition|If the modularity is below the optimal value 0.4 but above zero, the partition fails to identity the correct communities. | 
