@@ -59,7 +59,7 @@ If you wish to dive deeper into the analyses behind these findings, you will fir
 * issue_info: The summary for each bill/issue
 * roll_call_vote: The result of each Roll Call voting round 
 
-Each of these datasets contain data from the [US Congress Website](www.congress.gov). If you are curious to know exactly how we got the data, you can find a more throrough walk-through in the !!!TODO NOTEBOOK!. 
+Each of these datasets contain data from the [US Congress Website](www.congress.gov). If you are curious to know exactly how we got the data, you can find a more throrough walk-through in our [webscraping notebook](https://nbviewer.jupyter.org/github/benedictehejgaard/chaos-in-congress/blob/gh-pages/Scraping_Congress.ipynb) that explains how we carried out the scrape. 
 
 **Congress_110_116: Congress Member Data**
 
