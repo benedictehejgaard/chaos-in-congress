@@ -141,6 +141,29 @@ Before we are able to test our hypotheses, we have to built a network. As previo
 
 In the following, we will take you through a highlevel overview of the network analysis. If you wish to get an in-depth explanation of how this was carried out, along with the sequence of functions that were made to carry it out, you can download the Explainer Notebook below. 
 
+### Step 2 - Analyzing the Network 
+
+This section has been diving into three steps for an easier walk-through.
+
+Step 1: 
+To further examine the defined graphs for each term in Analysis 1 the best partition will be found using the Louvain heuristics algorithm from section "The Louvian algorithm" in the book http://networksciencebook.com/chapter/9#advanced-9c. The goal is to perform community detection which aims to uncover inherent community structure of the graphs.  Thus, the number and size of the communities are not predefined but needs to be found. 
+This is done by creating a dendogram, which creates a tree where each level is a partition of the graph nodes. Level zero will be the first partition and contains the smallest communities. The best partition will be the highest level, and higher level results in bigger communities.  
+
+The found communities will then be evaluated by calculating the modularity and by performing text analysis.  
+	- Skal der noget med polarisering? Eller er det okay at det står i modularity 
+
+Step 2:
+When the partitions for each graph have been found they can be evaluated by calculating the modularity using equation 9.12 from http://networksciencebook.com/chapter/9#modularity, which is a measure of quality.  Therefore, the modularity is a method to decide if a community partition is better than others. 
+We will also use the modularity method as a comparison method between the graph from the different terms, as we interprets a high modularity as more distinct partitions. Thus, if there is a change from a low modularity to a higher throughout the terms, this could indicate that the congress has become more polarized.  
+Modularity - in a tabel? 
+	- Optimal partition: Higher modularity implies better partition, as the corresponding community structure is better. The optimal partition is set to 0.4 based on image 9.16 in http://networksciencebook.com/chapter/9#modularity
+	- Suboptimal partition:  If the modularity is below the optimal value 0.4 but above zero, the partition fails to identity the correct communities. 
+	- Single community: This is when modularity is equal to zero,  which mean we assign all nodes to the same community.
+	- Negative modularity: When each node is assigned to a different community, the modularity becomes negative.  
+
+Step 3: 
+It will now be interesting to visualize the graphs where node color will be based on the partition instead of the party of the members. Hopefully, there will be a clear distinct between the partition where they have a higher modularity compared to those with a lower.
+
 ## Text Analysis 
 
 ## Where do I find the data?
