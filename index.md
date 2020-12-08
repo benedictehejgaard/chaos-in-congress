@@ -44,8 +44,15 @@ Below, you will find a simple overview of the above described termology:
 
 Please note, a detailed and thorough explanation of the underlying steps, codes and analysis to produce all these findings can be found under [network analysis](#Network Analysis), [text analysis](#Text Analysis) as well at the [explainer notebook](#Where do I find the master notebook that rigurously explains this entire analysis?) (advanced). 
 
-To examine whether polarization exists, we created a network of each representative, based on their voting pattern. Each node (the bubble) in the network represents a member of the House in the given term, and each edge (line between bubbles) represents a link between two members. Each time two members have voted *yes* for the same bill, they get a link, meaning that the "weights" each edge has depends on how much each member agress on bills with eachother. <span style="color:blue">Democratic</span> members have blue nodes, and a link between two democratic nodes are correspondingly blue. <span style="color:red">Republican</span> members have red nodes, and a link between two Republican nodes are correspondingly red. If a Republican and a Democrat have a link between them, the link is colored <span style="color:purple">purple</span>. 
+To examine whether polarization exists, we created a network of each representative, based on their voting pattern, using the *ForceAtlas2* library(TODO REF). Each node (the bubble) in the network represents a member of the House in the given term, and each edge (line between bubbles) represents a link between two members. Each time two members have voted *yes* for the same bill, they get a link, meaning that the "weights" each edge has depends on how much each member agress on bills with eachother. TODO Add about why some are further away. To reduce the density of the network while still remaining all information, we have used two approaces inspired by M. Ángeles Serrano et al. (2009)(TODO REF). Namely, setting a global minimum threshold for edgeweights, and using an algorithm to select significant edges based on edge weights. Please see advanced sections and the explainer notebook for further information. 
 
+In the networks below, <span style="color:blue">Democratic members have blue nodes</span>, and a link between two democratic nodes are correspondingly blue. <span style="color:red">Republican members have red nodes</span>, and a link between two Republican nodes are correspondingly red. If a Republican and a Democrat have a link between them, the link is colored <span style="color:purple">purple</span>. 
+
+**110th House of Representatives (2007-2009)**
+![image](Images/110fa2.png)
+
+**116th House of Representatives (2019-2021)**
+![image](Images/116fa2.png)
 
 ## The Data Used 
 
