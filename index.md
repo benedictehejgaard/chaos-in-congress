@@ -132,7 +132,7 @@ Further basic statistics as well as a walk-through of how these were found can b
 
 ### Step 1 - Building the Network 
 
-Before we are able to test our hypotheses, we have to built a network. As previously mentioned, we wish to create a network of representatives, connected by the rolls they have voted for. We have tested several heuristics to achieve this goal, however first the data was manipulated to a desirable format to construct the edges. Namely, we are interested in constructing node-pairs and counting how often they agree/disagree on bills in the following ways:
+Before we are able to test our hypotheses, we have to build a network. As previously mentioned, we wish to create a network of representatives, connected by the roll calls they have voted for. We have tested several heuristics to achieve this goal. Prior to testing these, the data was manipulated to a desirable format to construct the edges. Namely, we are interested in constructing node-pairs and counting how often they agree/disagree on bills in the following ways:
 
 * Agree yes: Both voting yes
 * Agree no: Both voting no
@@ -141,28 +141,34 @@ Before we are able to test our hypotheses, we have to built a network. As previo
 
 In the following, we will take you through a highlevel overview of the network analysis. If you wish to get an in-depth explanation of how this was carried out, along with the sequence of functions that were made to carry it out, you can download the Explainer Notebook below. 
 
+-- Fill in about creating the network -- 
+
 ### Step 2 - Analyzing the Network 
 
-This section has been diving into three steps for an easier walk-through.
+This section has been divided into three steps for an easier walk-through.
 
 Step 1: 
-To further examine the defined graphs for each term in Analysis 1 the best partition will be found using the Louvain heuristics algorithm from section "The Louvian algorithm" in the book http://networksciencebook.com/chapter/9#advanced-9c. The goal is to perform community detection which aims to uncover inherent community structure of the graphs.  Thus, the number and size of the communities are not predefined but needs to be found. 
+To further examine the defined graphs for each term in Analysis 1, the best partition (separation into smaller communities) of the nodes will be found using the Louvain heuristics algorithm from section "The Louvian algorithm" in the book http://networksciencebook.com/chapter/9#advanced-9c (TODO ref). The goal is to perform community detection which aims to uncover inherent community structure of the graphs.  Thus, the number and size of the communities are not predefined but needs to be found. 
 This is done by creating a dendogram, which creates a tree where each level is a partition of the graph nodes. Level zero will be the first partition and contains the smallest communities. The best partition will be the highest level, and higher level results in bigger communities.  
 
-The found communities will then be evaluated by calculating the modularity and by performing text analysis.  
-	- Skal der noget med polarisering? Eller er det okay at det står i modularity 
+The found communities will then be evaluated by calculating the modularity (a measure for how distinct the communities are) and by performing text analysis.  
 
 Step 2:
-When the partitions for each graph have been found they can be evaluated by calculating the modularity using equation 9.12 from http://networksciencebook.com/chapter/9#modularity, which is a measure of quality.  Therefore, the modularity is a method to decide if a community partition is better than others. 
+When the partitions for each graph have been found, they can be evaluated by calculating the modularity using equation 9.12 from http://networksciencebook.com/chapter/9#modularity (TODO ref). Modularity is a measure of the quality of the partition. Therefore, the modularity is a method to decide if a community partition is better than other partitions. 
 We will also use the modularity method as a comparison method between the graph from the different terms, as we interprets a high modularity as more distinct partitions. Thus, if there is a change from a low modularity to a higher throughout the terms, this could indicate that the congress has become more polarized.  
-Modularity - in a tabel? 
-	- Optimal partition: Higher modularity implies better partition, as the corresponding community structure is better. The optimal partition is set to 0.4 based on image 9.16 in http://networksciencebook.com/chapter/9#modularity
-	- Suboptimal partition:  If the modularity is below the optimal value 0.4 but above zero, the partition fails to identity the correct communities. 
-	- Single community: This is when modularity is equal to zero,  which mean we assign all nodes to the same community.
-	- Negative modularity: When each node is assigned to a different community, the modularity becomes negative.  
+
+In the tabel below, we have indicated our measures for determining if a partition is good or not. We are basing these numbers off image 9.16 in http://networksciencebook.com/chapter/9#modularity TODO ref. These could also be derived for our example, using the formulas in the same chapter.
+
+| Optimal Partition   | Higher modularity implies better partition, as the corresponding community structure is better. The optimal partition is set to 0.4 based on image 9.16 |
+|---------------------|------------------------------------------------------------------------|
+| Suboptimal Partition|If the modularity is below the optimal value 0.4 but above zero, the partition fails to identity the correct communities. | 
+|---------------------|------------------------------------------------------------------------|
+| Single Community    | This is when modularity is equal to zero,  which mean we assign all nodes to the same community. |
+|---------------------|------------------------------------------------------------------------|
+| Negative Modularity | When each node is assigned to a different community, the modularity becomes negative.  |
 
 Step 3: 
-It will now be interesting to visualize the graphs where node color will be based on the partition instead of the party of the members. Hopefully, there will be a clear distinct between the partition where they have a higher modularity compared to those with a lower.
+The last step was to visualize the graphs where node colors were be based on the partition instead of the party of the members. We were hoping to see a clear distinct between the partition where they have a higher modularity compared to those with a lower.
 
 ## Text Analysis 
 
