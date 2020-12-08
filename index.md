@@ -48,11 +48,8 @@ To examine whether polarization exists, we created a network of each representat
 
 In the networks below, <span style="color:blue">Democratic members have blue nodes</span>, and a link between two democratic nodes are correspondingly blue. <span style="color:red">Republican members have red nodes</span>, and a link between two Republican nodes are correspondingly red. If a Republican and a Democrat have a link between them, the link is colored <span style="color:purple">purple</span>. 
 
-**110th House of Representatives (2007-2009)**
-![image](Images/110fa2.png)
+![image](Images/fa2Plots.png)
 
-**116th House of Representatives (2019-2021)**
-![image](Images/116fa2.png)
 
 ## The Data Used 
 
