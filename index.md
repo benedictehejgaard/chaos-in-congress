@@ -161,13 +161,13 @@ In the tabel below, we have indicated our measures for determining if a partitio
 
 | Type                |  Description |
 |---------------------|--------------|
-| Optimal Partition   | Higher modularity implies better partition, as the corresponding community structure is better. The optimal partition is set to 0.4 based on image 9.16 |
+| Optimal Partition   | - Higher modularity implies better partition, as the corresponding community structure is better. The optimal partition is set to 0.4 based on image 9.16  |
 |---------------------|-----------------------------------------|
-| Suboptimal Partition|If the modularity is below the optimal value 0.4 but above zero, the partition fails to identity the correct communities. | 
+| Suboptimal Partition| - If the modularity is below the optimal value 0.4 but above zero, the partition fails to identity the correct communities. | 
 |---------------------|-----------------------------------------|
-| Single Community    | This is when modularity is equal to zero,  which mean we assign all nodes to the same community. |
+| Single Community    | - This is when modularity is equal to zero,  which mean we assign all nodes to the same community. |
 |---------------------|-----------------------------------------|
-| Negative Modularity | When each node is assigned to a different community, the modularity becomes negative.  |
+| Negative Modularity | - When each node is assigned to a different community, the modularity becomes negative.  |
 
 Step 3: 
 The last step was to visualize the graphs where node colors were be based on the partition instead of the party of the members. We were hoping to see a clear distinct between the partition where they have a higher modularity compared to those with a lower.
