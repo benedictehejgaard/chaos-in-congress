@@ -56,7 +56,9 @@ Each of these datasets contain data from the [US Congress Website](www.congress.
 
 **Congress_110_116: Congress Member Data**
 
-Insert section from notbook. 
+We use the dataset Congress_110_116 to gain an overview of all the members of the House of Representatives from terms 110-116. With the unique member_ID as a key, it contains information over the members of the congress since 2007, their political party, state, a URL to their website, and much more.
+
+There are 435 members of the House of Representatives. It is to be noted that members do not necessarily sit in the house for the full period. We have a total of 969 members in the dataset – 500 republicans, 468 democrats, and one independent, with 10 variables before the initial datacleaning. This low number is due to the fact the fact that most representatives sit for longer than just a single term - they are typically re-elected for multiple terms. This dataset is 156 kB.
 
 ![image](Images/Congress_110_116.png)
 
@@ -64,7 +66,11 @@ After cleaning, this dataset has 969 rows, corresponding to 969 members.
 
 **roll_info: Roll Call Data**
 
-Insert section from notbook. 
+We use the dataset Roll_Info to gain an overview of all the Roll Call voting rounds that have been carried out. The Dataset uses the roll-id (Roll Call number and Year) as a unique key. Additionally, it contains information on each roll call in terms of the bill that was voted for, the date, the question that was asked, and the result of the voting round. Since each bill has mutiple roll calls, the same bill can be present multiple times.
+
+The dataset also contains a variable labeled Issue_link which is a unique https link to the website of the bill voted for. Nice the worlds *bill* and *issue* are used interchangeably. The issue link will be key variable later, as it ties this dataset to the Issue_Info dataset, which is the dataset that contains the summaries of each bill. 
+
+There are 9800 unique roll calls in total. The dataset is 3 MB.
 
 ![image](Images/roll_info.png)
 
@@ -74,7 +80,7 @@ After data cleaning, the final dataset has 3082 Roll Calls and Bills (rows).
 
 **issue_info: The summary for each bill/issue**
 
-Insert section from notebook. 
+We use the dataset Issue_Info to gain the summaries for each bill. THe issue_link (described above) is the unique key for that issue/bill and each bill comes with a summary for that bill. This summary text will be used for the later text analysis. The dataset contains 4267 bills, and is 31 MB.
 
 ![image](Images/issue_info.png)
 
@@ -82,7 +88,7 @@ We clean the data by removing all empty summaries. After data cleaning, the fina
 
 **roll_call_vote: The result of each Roll Call voting round**
 
-Insert section from notebook. 
+We use the dataset Roll_Call_Vote to see what each member has voted at each roll call. It uses the member_ID as a unique key, and each column is a Roll_Call_ID. For each member for each key, the dataset will give the vote casted at each roll call by each representative. Notice, NaN is present if the member has not voted in that roll call. The dataset is 21 MB.
 
 ![image](Images/roll_call_vote.png)
 
