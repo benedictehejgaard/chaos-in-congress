@@ -58,8 +58,38 @@ In the networks, we clearly see the two distinct parties, with a few outliers. W
 
 We then examined if we could find any communities within the networks, discarding the political parties. If we were able to find communities within the networks, and see that they were divided based on their political party, this would contribute to our hypothesis that there is polarization in the House. In order to do so, we created partitions/communities in the network in each term (see [Network Analysis](#Network-Analysis) for further details). Furthermore, we calculated a so-called modularity score for each partition, which is a measure of how good the partition is. 
 
+![image](Images/FA2111_114.png)
 
-In the figure above, we have displayed the community partitions for terms 111 and terms 114. We have colored the partitions 
+In the figure above, we have displayed the community partitions for terms 111 and terms 114. We have colored the partitions green and purple, and the edges grey if they connect to a node of same partition, and blue if they connect to a node of a different partition. Terms 111 and 114 are interesting in particular, as term 111 saw the lowest modularity score (least polarized) and term 114 saw the highest (most polarized) - which is evident from the plot. 
+
+Lastly, we looked into most frequent words in the summaries that each member votes *yes* to. Below, we show the wordclouds (shaped like the US) of each term for each partition, along with a count of party members is each partition. The larger the word, the more frequent it is. Please see section [text analysis](#Text-Analysis) for further details. 
+
+Below each wordcloud, we will give some insights on trends in each term.
+
+![image](Images/wc1.png)
+110 (2007-2008) was fairly seprarated. The 2008 Food, Conservation and Energy act, a five-year agricultural bill, was passed, which is evident in partition 1. We see that this partition is highly Republican dominated, which makes sense as we know many states known for farming vote Republicans.
+
+![image](Images/wc2.png)
+111 (2009-2010) saw lowest modularity. We also see that this is the term where Partition 1 has the most democrats in a republican-dominated partition. Also seems that this term, partition one (republican dominant) is highly concentrated around words from the medical industry, which is a topic that typiaclly divided people. The democratic majority were mostly voting towards bills around wildlife conservation, seen in words like wilderness, rivers, trails, conservation etc. This is most likely due to the 2010 Wildlife Conversation Act.
+
+![image](Images/wc3.png)
+In 2011-2012 (term 112), Amtrak (American railroad service on the East coast) celebrated their 40th anniversary and announced a large remodeling of their services. This appeared to be a hot topic for the democrats. In the same year, Obama also passed a Free-Trade agreement with Panama and other countries (hot topic for republicans in the wordcloud).
+
+![image](Images/wc4.png)
+In term 113 (2013-2014) we once again saw a heavy amount of frequent words around farming in the Republican-dominated partition. 2014 is the year where the wildlife act came into force, which appear to be an act that many republicans votes yes for.
+
+![image](Images/wc5.png)
+In term 114 (2015-2016), the republican-dominant partition was keen on infrastructure (and forests), while the democratic-dominant partition appeared to be keen on academics.
+
+![image](Images/wc6.png)
+In term 115 (2017-2018), a new president was put into office. While agricultural terms were still a hot topics for the republican-dominant partition, the Office of International Regulatory Affairs (OIRA) was the dominant term. The democratic-dominant partition appeared to be keen on construction and the financial year of 2019 (FY2019).
+
+![image](Images/wc7.png)
+In term 116 (2019-2020), we notice even more international regulatory arrairs, as well as the rise of the Coronavirus pandemic. Words like "Taiwan", "hong kong", as well as the Customs and Boarder Control (cbc) were hot topics in the Republical party, while the topics of the democratic party was more spread out.
+
+While there are no clear voting patterns to be drawn from the wordclouds, we do notice that the agricultural sector seemed to be a hot topic in the republican-dominated partitions. 
+
+It is important to keep in mind that while we were able to perform text analysis and determine what words were frequent in the bills that each partition voted towards, this analysis will not be sufficient evidence to confirm where there is a clear polarization in the parties. While we were able to see some trends, due to the nature of the analysis, these words are not necessarily those that separate the waters for each partition. For example, we know that the political parties have very different views on taxes. However, they could both be voting for a bill that lowers taxes and a bill that raises taxes, hence the word "taxes" would likely be removed.
 
 
 ## The Data Used 
