@@ -173,6 +173,39 @@ Step 3:
 The last step was to visualize the graphs where node colors were be based on the partition instead of the party of the members. We were hoping to see a clear distinct between the partition where they have a higher modularity compared to those with a lower.
 
 ## Text Analysis 
+he bill/issue summaries are used to perform text analysis by using the partition of the graph found in Analysis 2. This will hopefully help us to understand if there is a voting pattern over time for the partitions, as well as what topics each partitions stands for. The following steps are used to reach that goal.
+
+Step 1:
+Some data processing is necessary to extract the bill/issue summaries, which are more descriptive for the specific partitions. 
+
+First, the voting for the rolls calls information is in the edges, as the edges between two nodes are the rolls calls they both have voted yes to, and the partition information is on the nodes. Thus, we need to extract the edges between two nodes, which are in the same partition. This will give extremely many roll calls with different occurrences, as only two members have to have voted yes for the roll call to be considered.  Therefore,  the roll calls will receive a weight in the form of their frequency to accommodate this problem as we are interested in the roll calls which they agree to vote yes to the most. This way we can extract the top quantile of roll calls which should be the ones which are most descriptive for the specific partitions.
+
+Step 2: 
+Now, the wanted roll calls have been found and their corresponding summaries, which we then have to clean before any text analysis can be performed. 
+
+This is done by tokenize the summaries and then remove stop words, common bill words, years, punctuation and single characters to only include word, which should have more meaning in the summaries. 
+
+Lastly, we want to investigate whether a stemming method should be used. In this project the result from the Porter Stemmer algorithm in the nltk package will be used.
+
+Step 3: 
+The Text Analysis can now be performed on the data. The end goal is to have a word cloud which reflects the most important words in the specific partition compared to the other partition in that term. We use term frequency-inverse document frequency (TF-IDF) to find the weighting factor for the words in the partition. 
+
+The TF calculation is the number of times the word occurs in a partition divided with the number of words in the document, thus the value will increase proportionally to the number of times a word occurs. To adjust for words which occurs more frequently in general we use the IDF, which measures how much information a word provides. This is done by taking the logarithm of the number of partition divided with the number of documents containing the word, t. 
+
+The TF-IDF formular is: 
+
+**** INSERT FORMULAR **** 
+
+TF * IDF 
+
+
+Where f_t,d is the raw count of the word in a partition, N is the number of partitions and 𝑛𝑡 is the number of documents containing term t. 
+
+It is also worth noting that we are currently operating on 'clean' text, however the IDF function indirectly handles stop words by assigning them a weight of 0, if they occur in all of the documents in question.
+
+Step 4: 
+The word cloud can now be generated based on the TF-IDF calculations for each partition in every term. This will hopefully visualised a distinct voting pattern for each partition over time. 
+
 
 ## Where do I find the data?
 The four datasets used for the analyses can be downloaded from our github repository [here](data). 
