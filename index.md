@@ -204,7 +204,7 @@ The new graph will also be compared to a random network with the same number of 
 
 ![image](Images/comp_thres.png)
 
-Looking at these, it appears that our network with the global threshhold for edge weights approximates that of a random network, however it is difficult to conclude on the distribution. We would expect a real random to be in the supercritical regime, however in our case the network is more connected, and the giant component actually consumes all nodes. We checked this by calculating whether <img src="https://latex.codecogs.com/gif.latex?<k> > ln(N)"/> , and we found that <img src="https://latex.codecogs.com/gif.latex?<k>" = 182.81 and "ln(N)" 6.03 />, thus we have 1 connected component (see notebook for calculation). 
+Looking at these, it appears that our network with the global threshhold for edge weights approximates that of a random network, however it is difficult to conclude on the distribution. We would expect a real random to be in the supercritical regime, however in our case the network is more connected, and the giant component actually consumes all nodes. We checked this by calculating whether \<k\> \> ln(N) , and we found that \<k\> = 182.81 and ln(N) 6.03, thus we have 1 connected component (see notebook for calculation). 
   
 
 
