@@ -45,7 +45,7 @@ Below, you will find a simple overview of the above described termology:
 
 Please note, a detailed and thorough explanation of the underlying steps, codes and analysis to produce all these findings can be found under [network analysis](#Network Analysis), [text analysis](#Text Analysis) as well at the [explainer notebook](#Where-do-I-find-the-master-notebook-that-rigurously-explains-this-entire-analysis?) (advanced). 
 
-To examine whether polarization exists, we created a network of each representative, based on their voting pattern, using the *ForceAtlas2* library(TODO REF). Each node (the bubble) in the network represents a member of the House in the given term, and each edge (line between bubbles) represents a link between two members. Each time two members have voted *yes* for the same bill, they get a link, meaning that the "weights" each edge has depends on how much each member agress on bills with eachother. TODO Add about why some are further away. To reduce the density of the network while still remaining all information, we have used two approaces inspired by M. Ángeles Serrano et al. (2009)(TODO REF). Namely, setting a global minimum threshold for edgeweights, and using an algorithm to select significant edges based on edge weights. Please see advanced sections and the explainer notebook for further information. 
+To examine whether polarization exists, we created a network of each representative, based on their voting pattern, using the *ForceAtlas2* library [1]. Each node (the bubble) in the network represents a member of the House in the given term, and each edge (line between bubbles) represents a link between two members. Each time two members have voted *yes* for the same bill, they get a link, meaning that the "weights" each edge has depends on how much each member agress on bills with eachother. **TODO Add about why some are further away.** To reduce the density of the network while still remaining all information, we have used two approaces inspired by M. Ángeles Serrano et al. (2009)[2]. Namely, setting a global minimum threshold for edgeweights, and using an algorithm to select significant edges based on edge weights. Please see advanced sections and the explainer notebook for further information. 
 
 In the networks below, <span style="color:blue">Democratic members have blue nodes</span>, and a link between two democratic nodes are correspondingly blue. <span style="color:red">Republican members have red nodes</span>, and a link between two Republican nodes are correspondingly red. If a Republican and a Democrat have a link between them, the link is colored <span style="color:purple">purple</span>. 
 
@@ -146,21 +146,21 @@ First, the network for each congress will be created, where the nodes are define
 Additionally, we will also save the specific roll calls edges between each node, where both members have voted yes. This information will be used in the next analysis. 
 
 **Step 2:** 
-The newly constructed network will then be visualised using a modified version of ForceAtlas2 from the github user bhargavchippada (REF), as this package is able to visualised the network with specific edge weight. This is done to see if there is a visual difference between using edge weight or not. Next, the degree of the network will be analysed.  
+The newly constructed network will then be visualised using a modified version of ForceAtlas2 from the github user bhargavchippada [1], as this package is able to visualised the network with specific edge weight. This is done to see if there is a visual difference between using edge weight or not. Next, the degree of the network will be analysed.  
 
-We suspect that the graph will be complete, meaning all possible edges will be present, as an edge will be create if the two members have vote on the same roll call in their congress term. Thus, two methods to lower the density of the network will be investigated, namely global minimum threshold and extracting the multiscale backbone. These methods are both inspired by M. Ángeles Serrano et al. (2009) [REF].   
+We suspect that the graph will be complete, meaning all possible edges will be present, as an edge will be create if the two members have vote on the same roll call in their congress term. Thus, two methods to lower the density of the network will be investigated, namely global minimum threshold and extracting the multiscale backbone. These methods are both inspired by M. Ángeles Serrano et al. (2009) [2].   
 
 **Step 3:**
-The first method to investigate is the **Global minimum threshold**, which sets a global minimum threshold for edge weights for edges to be included in the graph. In this project we use a given percentile of the edge weight as the threshold.  The goal is to keep as much information in the graph as possible, thus edges with a specific edge weight below the threshold will be removed as these are assumed to be less meaningful to the network. 
+The first method to investigate is the *Global minimum threshold*, which sets a global minimum threshold for edge weights for edges to be included in the graph. In this project we use a given percentile of the edge weight as the threshold.  The goal is to keep as much information in the graph as possible, thus edges with a specific edge weight below the threshold will be removed as these are assumed to be less meaningful to the network. 
 
 Next, the sensitivity of the global edge weight threshold will be investigated by calculating the remaining nodes and edges for various percentiles. The acceptance criteria for the optimal percentile is to choose the highest percentile while keeping all nodes, as we do not want to exclude any members. 
 The Global minimum threshold will then be applied to the graph with the optimal percentile, which then will be analysed by the number of node and edges, the degree distribution and visualising the graph with an edge weight. 
 
-The new graph will also be compared to a random network with the same number of nodes and probability of connection, to see if it approximates a random network. Last, we will estimate whether the graph is in the subcritical regime (like a real random network), critical point, supercritical regime or connected regime from section 3.6 "The Evolution of a random Network [REF - Network book- Albert-László, et al, chapter 3.6 [1]].  
+The new graph will also be compared to a random network with the same number of nodes and probability of connection, to see if it approximates a random network. Last, we will estimate whether the graph is in the subcritical regime (like a real random network), critical point, supercritical regime or connected regime from section 3.6 "The Evolution of a random Network [3].  
 
 
 **Step 4:** 
-The method of extracting the multiscale backbone is based on a algorithm which select significant edges based on edge weights and is inspired by inspired by M. Ángeles Serrano et al. (2009) REF. This is done by using a disparity filter to select the significant edges.  The code used to implement this method is inspired by GitHub user 'aekpalakorn' and is adapted for our purposes. 
+The method of extracting the multiscale backbone is based on a algorithm which select significant edges based on edge weights and is inspired by inspired by M. Ángeles Serrano et al. (2009) [2]. This is done by using a disparity filter to select the significant edges.  The code used to implement this method is inspired by GitHub user 'aekpalakorn' and is adapted for our purposes. 
 
 The goal of this method is to identify the most significant edges for each node rather than simply choose the edges with the highest edge weights in the entire network. The most significant edges are identified by calculating a significance value (alpha) per edge. Alpha is a measure for how significant the weight of a given edge is compared to the rest of the edges linked to a specific node, and is calculated as follows:
 
@@ -171,7 +171,7 @@ where k is degree, x is the edge weight and <img src="https://latex.codecogs.co
 All edges in the network will then have an alpha value. Thus, it is now possible to set an alpha threshold such that edges with an alpha value below the alpha threshold will me removed. As with the global minimum threshold method, we will also perform a sensitivity analysis of the alpha threshold to find the optimal alpha threshold value. This will also be done by calculating the remaining nodes, edges for various alpha thresholds. The accept criteria for the optimal alpha threshold is to choose the lowest alpha value for which all nodes remains,  as we do not want to exclude any congress members. 
 The found optimal alpha threshold value will then be used in the extracting the multiscale backbone method, so we can analyse the graph. This will be done the same way as for the global minimum threshold method, namely by the number of node and edges, the degree distribution and visualising the graph with an edge weight. 
 
-The graph created with  extracting the multiscale backbone will also be compared to a random network with the same number of nodes and probability of connection, to see if it follows that of a random network. Last, we will again estimate whether the graph is in the subcritical regime, critical point, supercritical regime or connected regime from section 3.6 "The Evolution of a random Network [REF - Network book- Albert-László, et al, chapter 3.6 [1]].  
+The graph created with  extracting the multiscale backbone will also be compared to a random network with the same number of nodes and probability of connection, to see if it follows that of a random network. Last, we will again estimate whether the graph is in the subcritical regime, critical point, supercritical regime or connected regime from section 3.6 "The Evolution of a random Network [3].  
 
 **Step 5:** 
 Next, we have to investigate which edge reduction method is preferred. This will be done by visualising the remaining weight and edges versus the remaining nodes for the found optimal percentile and optimal alpha value. We will then argue which method will be the preferred to use to create the final graphs. 
@@ -188,16 +188,16 @@ It will be easier to interpret the result in the following Community Detection a
 This section has been divided into three steps for an easier walk-through.
 
 **Step 1:** 
-To further examine the defined graphs for each term in Analysis 1, the best partition (separation into smaller communities) of the nodes will be found using the Louvain heuristics algorithm from section "The Louvian algorithm" in the book http://networksciencebook.com/chapter/9#advanced-9c (TODO ref). The goal is to perform community detection which aims to uncover inherent community structure of the graphs.  Thus, the number and size of the communities are not predefined but needs to be found. 
+To further examine the defined graphs for each term in Analysis 1, the best partition (separation into smaller communities) of the nodes will be found using the Louvain heuristics algorithm from section "The Louvian algorithm" in Barabási et. al, ch. 9 [3]. The goal is to perform community detection which aims to uncover inherent community structure of the graphs.  Thus, the number and size of the communities are not predefined but needs to be found. 
 This is done by creating a dendogram, which creates a tree where each level is a partition of the graph nodes. Level zero will be the first partition and contains the smallest communities. The best partition will be the highest level, and higher level results in bigger communities.  
 
 The found communities will then be evaluated by calculating the modularity (a measure for how distinct the communities are) and by performing text analysis.  
 
 **Step 2:**
-When the partitions for each graph have been found, they can be evaluated by calculating the modularity using equation 9.12 from http://networksciencebook.com/chapter/9#modularity (TODO ref). Modularity is a measure of the quality of the partition. Therefore, the modularity is a method to decide if a community partition is better than other partitions. 
+When the partitions for each graph have been found, they can be evaluated by calculating the modularity using equation 9.12 from Barabási et. al [3]. Modularity is a measure of the quality of the partition. Therefore, the modularity is a method to decide if a community partition is better than other partitions. 
 We will also use the modularity method as a comparison method between the graph from the different terms, as we interprets a high modularity as more distinct partitions. Thus, if there is a change from a low modularity to a higher throughout the terms, this could indicate that the congress has become more polarized.  
 
-In the tabel below, we have indicated our measures for determining if a partition is good or not. We are basing these numbers off image 9.16 in http://networksciencebook.com/chapter/9#modularity TODO ref. These could also be derived for our example, using the formulas in the same chapter.
+In the tabel below, we have indicated our measures for determining if a partition is good or not. We are basing these numbers off image 9.16 in Barabási et. al [3]. These could also be derived for our example, using the formulas in the same chapter.
 
 | Type                |  Description |
 |---------------------|--------------|
@@ -225,7 +225,7 @@ Now, the wanted roll calls have been found and their corresponding summaries, wh
 
 This is done by tokenize the summaries and then remove stop words, common bill words, years, punctuation and single characters to only include word, which should have more meaning in the summaries. 
 
-Lastly, we want to investigate whether a stemming method should be used. In this project the result from the Porter Stemmer algorithm in the nltk package will be used.
+Lastly, we want to investigate whether a stemming method should be used. In this project the result from the Porter Stemmer algorithm in the nltk package will be used [4].
 
 **Step 3:** 
 The Text Analysis can now be performed on the data. The end goal is to have a word cloud which reflects the most important words in the specific partition compared to the other partition in that term. We use term frequency-inverse document frequency (TF-IDF) to find the weighting factor for the words in the partition. 
@@ -255,4 +255,20 @@ All data is retrieved from [www.congress.gov](www.congress.gov)
 
 ## Where do I find the master notebook that rigurously explains this entire analysis? 
 A full description of the entire analysis can be retrieved [here](https://nbviewer.jupyter.org/github/benedictehejgaard/chaos-in-congress/blob/gh-pages/EXPLAINER_NOTEBOOK.ipynb). 
+
+## References 
+
+Used on this page: 
+[1] Bhargav Chippada, forceatlas2, (2020), Github Repository, https://github.com/bhargavchippada/forceatlas2 
+
+[2] Serrano, M. Ángeles, Marián Boguná, and Alessandro Vespignani. "Extracting the multiscale backbone of complex weighted networks." *Proceedings of the national academy of sciences* 106.16 (2009): 6483-6488.
+
+[3] Barabási, Albert-László. *Network science*. Cambridge university press, 2016. Chapters 3, 9. 
+
+[4] Bird, Steven, Edward Loper and Ewan Klein (2009), *Natural Language Processing with Python*.  O'Reilly Media Inc.
+
+Additionally used in attached notebooks: 
+- Lobodemonte (Erik), Congress Scraping, (2020), GitHub Repository, https://github.com/lobodemonte/big-data-for-public-policy 
+- "Congress Profiles: US House of Representatives: History, Art & Archives." Web. 09 Dec. 2020. Accessed at https://history.house.gov/Congressional-Overview/Profiles/115th/ 
+- Aekpalakorn (aek), python-backbone-network, (2016), GitHub Repository, https://github.com/aekpalakorn/python-backbone-network 
 
