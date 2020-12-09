@@ -162,9 +162,9 @@ The new graph will also be compared to a random network with the same number of 
 The method of extracting the multiscale backbone is based on a algorithm which select significant edges based on edge weights and is inspired by inspired by M. Ángeles Serrano et al. (2009) REF. This is done by using a disparity filter to select the significant edges.  The code used to implement this method is inspired by GitHub user 'aekpalakorn' and is adapted for our purposes. 
 
 The goal of this method is to identify the most significant edges for each node rather than simply choose the edges with the highest edge weights in the entire network. The most significant edges are identified by calculating a significance value (alpha) per edge. Alpha is a measure for how significant the weight of a given edge is compared to the rest of the edges linked to a specific node, and is calculated as follows:
-$$
-\alpha_{ij} = 1 - (k - 1) \int_{0}^{p_{ij}}(1+x)^{k-2}dx
-$$
+
+$$\alpha_{ij} = 1 - (k - 1) \int_{0}^{p_{ij}}(1+x)^{k-2}dx,$$
+
 where k is degree, x is the edge weight and $𝑝_{𝑖𝑗}$ is the relative weight of the edge out of the total edge weights for that given node.
 
 All edges in the network will then have an alpha value. Thus, it is now possible to set an alpha threshold such that edges with an alpha value below the alpha threshold will me removed. As with the global minimum threshold method, we will also perform a sensitivity analysis of the alpha threshold to find the optimal alpha threshold value. This will also be done by calculating the remaining nodes, edges for various alpha thresholds. The accept criteria for the optimal alpha threshold is to choose the lowest alpha value for which all nodes remains,  as we do not want to exclude any congress members. 
