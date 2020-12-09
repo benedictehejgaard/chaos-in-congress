@@ -159,11 +159,11 @@ The first method to investigate is the *Global minimum threshold*, which sets a 
 Next, the sensitivity of the global edge weight threshold will be investigated by calculating the remaining nodes and edges for various percentiles. The acceptance criteria for the optimal percentile is to choose the highest percentile while keeping all nodes, as we do not want to exclude any members. 
 The Global minimum threshold will then be applied to the graph with the optimal percentile, which then will be analysed by the number of node and edges, the degree distribution and visualising the graph with an edge weight. 
 
---FA2thres --
+![image](Images/FAthres.png)
 
 The new graph will also be compared to a random network with the same number of nodes and probability of connection, to see if it approximates a random network. Last, we will estimate whether the graph is in the subcritical regime (like a real random network), critical point, supercritical regime or connected regime from section 3.6 "The Evolution of a random Network [3].  
 
---comp_thres--
+![image](Images/comp_thres.png)
 
 Looking at these, it appears that our network with the global threshhold for edge weights approximates that of a random network, however it is difficult to conclude on the distribution. We would expect a real random to be in the supercritical regime, however in our case the network is more connected, and the giant component actually consumes all nodes. We checked this by calculating whtehr <k> > ln(N), and we found that <k> = 182.81 and ln(N) = 6.03, thus we have 1 connected component (see notebook for calculation). 
   
@@ -193,7 +193,7 @@ Interestingly, the disparity graph results in a denser degree distribution, in t
 **Step 5:** 
 Next, we have to investigate which edge reduction method is preferred. This will be done by visualising the remaining weight and edges versus the remaining nodes for the found optimal percentile and optimal alpha value. We will then argue which method will be the preferred to use to create the final graphs. 
 
---comp--
+![image](Images/comp.png)
 
 Looking at the plots, it is evident that for fewer edges, the disparity maintains more total edge weight as well as nodes, therefore this method for reducing number of edges is preferred. Furthermore, from an analytical standpoint it makes more intuitive sense to have a measure of significance rather than applying an arbitrary global threshold to uniformly remove edges.
 
@@ -232,14 +232,14 @@ In the tabel below, we have indicated our measures for determining if a partitio
 
 We found the following modularity measures over the different terms:
 
--- INSERT MODU FIGURE -- 
+![image](Images/modu.png)
 
 We notice that the modularity varies greatly, with a minimum at term 111 to a maximum around terms 113-114. In terms 112-115, we have a high modularity, hence the partitions must be more polarized since the partitions are more distinct. Before term 110 and during the current term, we see a modularity score under the threshold, indicating that the partitions are less distinct. It is important to remember that the number of bills in each term also varies, which could also be a contributing factor. 
 
 **Step 3**: 
 The last step was to visualize the graphs where node colors were be based on the partition instead of the party of the members. We were hoping to see a clear distinct between the partition where they have a higher modularity compared to those with a lower.
 
--- FA2111_114 -- 
+![image](Images/FA2111_114.png) 
 
 The graph above is an example of a partition plot from terms 111 and 114 where we can see that the partitions are more distinct (thus polarized) in term 114 where we also saw a higher modularity. 
 
@@ -258,7 +258,7 @@ This is done by tokenize the summaries and then remove stop words, common bill w
 
 Lastly, we want to investigate whether a stemming method should be used. In this project the result from the Porter Stemmer algorithm in the nltk package will be used [4]. We generated two examples of wordclouds, one with stemming and one without:
 
---STEM--
+![image](Images/stem.png)
 
 Based on these finding, we evaluate that there is no significant difference in using stemming or not in this example. If this was to be optimized, we would need a stemming algorithm that was indistry specific. Thus, we continue without stemming as we evaluate the extra computational power is not necessary in this example.
 
