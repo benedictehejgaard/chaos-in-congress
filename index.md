@@ -330,7 +330,7 @@ All data is retrieved from [www.congress.gov](www.congress.gov)
 ## Where do I find the master notebook that rigorously  explains this entire analysis? 
 A full description of the entire analysis can be retrieved [here](https://nbviewer.jupyter.org/github/benedictehejgaard/chaos-in-congress/blob/gh-pages/EXPLAINER_NOTEBOOK.ipynb). 
 
-NOTE: if for some reason the above link should fail, the EXPLAINER NOTEBOOK can also be accessed on Google Colab [here](https://colab.research.google.com/drive/1Kpv8813vWAx9kNPCePU6kxGiHQWQqAw6?usp=sharing)
+NOTE: if for some reason the above link should fail, the EXPLAINER NOTEBOOK can also be accessed on Google Colab [here](https://colab.research.google.com/drive/1Kpv8813vWAx9kNPCePU6kxGiHQWQqAw6?usp=sharing) (NBViewer was lagging as well as outputting a strange table format at the time of upload)
 
 ## References 
 
