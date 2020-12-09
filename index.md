@@ -29,6 +29,8 @@ Before we get started with the results, we realize not everyone is an expert in 
 
 The United States Congress consists of two parts; the house of representatives and the senate. This particular project is solely interested in the house of representatives, which is comprised of 435 members. Each house sits for a 2-year term, after which it is possible to be reelected (as most representatives do). The job of the representatives is to consider bill proposals and amendments in order to introduce new legislation in the United States. Each of these votes is referred to as a roll call and will be uniquely identified by the year and a roll call number (2020-10 will uniquely identify a roll call for example). If a bill is passed in the house of representatives, it is voted on in the senate and finally it is presented to the president. 
 
+We will be analyzing data from term 110-116, hence from 2007-2021 (notice the current term 116 runs from 2019-2021, thus not finialized yet). 
+
 
 Below, you will find a simple overview of the above described termology: 
 
@@ -46,11 +48,18 @@ Below, you will find a simple overview of the above described termology:
 
 Please note, a detailed and thorough explanation of the underlying steps, codes and analysis to produce all these findings can be found under [network analysis](#Network Analysis), [text analysis](#Text Analysis) as well at the [explainer notebook](#Where-do-I-find-the-master-notebook-that-rigurously-explains-this-entire-analysis?) (advanced). 
 
-To examine whether polarization exists, we created a network of each representative, based on their voting pattern, using the *ForceAtlas2* library [1]. Each node (the bubble) in the network represents a member of the House in the given term, and each edge (line between bubbles) represents a link between two members. Each time two members have voted *yes* for the same bill, they get a link, meaning that the "weights" each edge has depends on how much each member agress on bills with eachother. **TODO Add about why some are further away.** To reduce the density of the network while still remaining all information, we have used two approaces inspired by M. Ángeles Serrano et al. (2009)[2]. Namely, setting a global minimum threshold for edgeweights, and using an algorithm to select significant edges based on edge weights. Please see advanced sections and the explainer notebook for further information. 
+To examine whether polarization exists, we created a network of each representative, based on their voting pattern, using the *ForceAtlas2* library [1]. Each node (the bubble) in the network represents a member of the House in the given term, and each edge (line between bubbles) represents a link between two members. Each time two members have voted *yes* for the same bill, they get a link, meaning that the "weights" each edge have depends on how much each member agress on bills with eachother. The closer two nodes are, the more they agree with eachother. To reduce the density of the network while still remaining all information, we have used two approaces inspired by M. Ángeles Serrano et al. (2009)[2]. Namely, setting a global minimum threshold for edgeweights, and using an algorithm to select significant edges based on edge weights. Please see advanced sections and the explainer notebook for further information. 
 
-In the networks below, <span style="color:blue">Democratic members have blue nodes</span>, and a link between two democratic nodes are correspondingly blue. <span style="color:red">Republican members have red nodes</span>, and a link between two Republican nodes are correspondingly red. If a Republican and a Democrat have a link between them, the link is colored <span style="color:purple">purple</span>. 
+In the networks below, <span style="color:blue">Democratic members have blue nodes</span>, and a link between two democratic nodes are correspondingly blue. <span style="color:red">Republican members have red nodes</span>, and a link between two Republican nodes are correspondingly red. If a Republican and a Democrat have a link between them, the link is colored <span style="color:purple">purple</span>. Below, you will find the generated, finalized networks for terms 111 (2009-2010), term 114 (2015-2016) and term 116 (2019-2021).
 
-![image](Images/fa2Plots.png)
+![image](Images/faAll.png)
+
+In the networks, we clearly see the two distinct parties, with a few outliers. We also notice that term 111 seemed to be less polarized as the nodes are closer, whereas term 114 is more polarized (two more distinct node-centers). Today, we also see two poles, with the democratic members seeming less polarized (more outliers) than the republicans. 
+
+We then examined if we could find any communities within the networks, discarding the political parties. If we were able to find communities within the networks, and see that they were divided based on their political party, this would contribute to our hypothesis that there is polarization in the House. In order to do so, we created partitions/communities in the network in each term (see [Network Analysis](#Network-Analysis) for further details). Furthermore, we calculated a so-called modularity score for each partition, which is a measure of how good the partition is. 
+
+
+In the figure above, we have displayed the community partitions for terms 111 and terms 114. We have colored the partitions 
 
 
 ## The Data Used 
