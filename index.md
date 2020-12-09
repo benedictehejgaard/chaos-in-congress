@@ -267,16 +267,17 @@ The Text Analysis can now be performed on the data. The end goal is to have a wo
 
 The TF calculation is the number of times the word occurs in a partition divided with the number of words in the document, thus the value will increase proportionally to the number of times a word occurs. To adjust for words which occurs more frequently in general we use the IDF, which measures how much information a word provides. This is done by taking the logarithm of the number of partition divided with the number of documents containing the word, t. 
 
-The TF-IDF formular is: 
+The TF-IDF components are: 
 
-**** INSERT FORMULAR **** 
+<img src="https://latex.codecogs.com/gif.latex?TF&space;=&space;\frac{f_{t,d}}{\sum_{t'&space;\in&space;d}^{}&space;f_{t',d}}&space;\" title="TF = \frac{f_{t,d}}{\sum_{t' \in d}^{} f_{t',d}} \" />
 
-TF * IDF 
-
+<img src="https://latex.codecogs.com/gif.latex?IDF&space;=&space;log(\frac{N}{n_t})" title="IDF = log(\frac{N}{n_t})" />
 
 Where $f_{t,d}$ is the raw count of the word in a partition, N is the number of partitions and $𝑛_𝑡$ is the number of documents containing term t. 
 
-It is also worth noting that we are currently operating on 'clean' text, however the IDF function indirectly handles stop words by assigning them a weight of 0, if they occur in all of the documents in question.
+Multiplying the term frequency with the IDF weights will give the final TF-IDF counts fr each word, which will be used in the wordcloud to score each word. 
+
+It is worth noting that we are currently operating on 'clean' text, however the IDF function indirectly handles stop words by assigning them a weight of 0, if they occur in all of the documents in question.
 
 **Step 4:** 
 The word cloud can now be generated based on the TF-IDF calculations for each partition in every term. This will hopefully visualise a distinct voting pattern for each partition over time. The resulting wordclouds can be seen under [Findings](#Findings). 
