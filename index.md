@@ -167,7 +167,9 @@ $$\alpha_{ij} = 1 - (k - 1) \int_{0}^{p_{ij}}(1+x)^{k-2}dx,$$
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\alpha_{ij}&space;=&space;1&space;-&space;(k&space;-&space;1)&space;\int_{0}^{p_{ij}}(1&plus;x)^{k-2}dx" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\alpha_{ij}&space;=&space;1&space;-&space;(k&space;-&space;1)&space;\int_{0}^{p_{ij}}(1&plus;x)^{k-2}dx" title="\alpha_{ij} = 1 - (k - 1) \int_{0}^{p_{ij}}(1+x)^{k-2}dx" /></a>
 
-where k is degree, x is the edge weight and $𝑝_{𝑖𝑗}$ is the relative weight of the edge out of the total edge weights for that given node.
+<img src="https://latex.codecogs.com/gif.latex?\alpha_{ij}&space;=&space;1&space;-&space;(k&space;-&space;1)&space;\int_{0}^{p_{ij}}(1&plus;x)^{k-2}dx" title="\alpha_{ij} = 1 - (k - 1) \int_{0}^{p_{ij}}(1+x)^{k-2}dx" />
+
+where k is degree, x is the edge weight and <img src="https://latex.codecogs.com/gif.latex?p_{ij}" title="p_{ij}" /> is the relative weight of the edge out of the total edge weights for that given node.
 
 All edges in the network will then have an alpha value. Thus, it is now possible to set an alpha threshold such that edges with an alpha value below the alpha threshold will me removed. As with the global minimum threshold method, we will also perform a sensitivity analysis of the alpha threshold to find the optimal alpha threshold value. This will also be done by calculating the remaining nodes, edges for various alpha thresholds. The accept criteria for the optimal alpha threshold is to choose the lowest alpha value for which all nodes remains,  as we do not want to exclude any congress members. 
 The found optimal alpha threshold value will then be used in the extracting the multiscale backbone method, so we can analyse the graph. This will be done the same way as for the global minimum threshold method, namely by the number of node and edges, the degree distribution and visualising the graph with an edge weight. 
