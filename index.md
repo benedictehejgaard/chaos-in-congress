@@ -273,7 +273,7 @@ The TF-IDF components are:
 
 <img src="https://latex.codecogs.com/gif.latex?IDF&space;=&space;log(\frac{N}{n_t})" title="IDF = log(\frac{N}{n_t})" />
 
-Where $f_{t,d}$ is the raw count of the word in a partition, N is the number of partitions and $𝑛_𝑡$ is the number of documents containing term t. 
+Where <img src="https://latex.codecogs.com/gif.latex?f_{t,d}" title="f_{t,d}" /> is the raw count of the word in a partition, N is the number of partitions and <img src="https://latex.codecogs.com/gif.latex?n_t" title="n_t" /> is the number of documents containing term t. 
 
 Multiplying the term frequency with the IDF weights will give the final TF-IDF counts fr each word, which will be used in the wordcloud to score each word. 
 
