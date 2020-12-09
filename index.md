@@ -137,6 +137,7 @@ Before we are able to test our hypotheses, we have to build a network. As previo
 * Agree no: Both voting no
 * Agree: Total agree yes and agree no
 * Disagree: One yes, one no
+
 In the following, we will take you through a highlevel overview of the network analysis. If you wish to get an in-depth explanation of how this was carried out, along with the sequence of functions that were made to carry it out, you can download the Explainer Notebook below.
 
 Step 1: 
