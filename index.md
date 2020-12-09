@@ -14,14 +14,14 @@ On this website, we wish to give you an overview of the voting patterns in the U
 **Intrigued? Keep on reading for insights on our findings!** 
 
 ## Navigating the page 
-1. [Context and terminology](#Context-and-terminology)
-2. [Findings](https://github.com/benedictehejgaard/chaos-in-congress/blob/gh-pages/index.md#findings)
-3. [Data Used](#The-Data-Used) 
-4. [Network Analysis](#Network-Analysis) (advanced)
-5. [Text Analysis](#Text-Analysis) (advanced)
-6. [Download the Dataset](#Where-do-I-find-the-data?) 
-7. [Download the Entire Workbook](#Where-do-I-find-the-master-notebook-that-rigurously-explains-this-entire-analysis?)
-8. [References](#References)
+1. Context and terminology
+2. Findings
+3. Data Used
+4. Network Analysis (advanced)
+5. Text Analysis (advanced)
+6. Download the Dataset
+7. Download the Entire Workbook (Explainer notebook)
+8. References
 
 
 ## Context and termonology
