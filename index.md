@@ -149,7 +149,7 @@ Additionally, we will also save the specific roll calls edges between each node,
 **Step 2:** 
 The newly constructed network will then be visualised using a modified version of ForceAtlas2 from the github user bhargavchippada [1], as this package is able to visualised the network with specific edge weight. This is done to see if there is a visual difference between using edge weight or not. An example of the edge weight influence can be seen below: 
 
--- INSERT edgeweight influence fig -- 
+![image](Images/edgeWeight.png)
 
 Next, the degree of the network will be analysed. We suspect that the graph will be complete, meaning all possible edges will be present, as an edge will be create if the two members have vote on the same roll call in their congress term. Thus, two methods to lower the density of the network will be investigated, namely global minimum threshold and extracting the multiscale backbone. These methods are both inspired by M. Ángeles Serrano et al. (2009) [2].   
 
