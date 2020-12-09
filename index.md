@@ -147,9 +147,11 @@ First, the network for each congress will be created, where the nodes are define
 Additionally, we will also save the specific roll calls edges between each node, where both members have voted yes. This information will be used in the next analysis. 
 
 **Step 2:** 
-The newly constructed network will then be visualised using a modified version of ForceAtlas2 from the github user bhargavchippada [1], as this package is able to visualised the network with specific edge weight. This is done to see if there is a visual difference between using edge weight or not. Next, the degree of the network will be analysed.  
+The newly constructed network will then be visualised using a modified version of ForceAtlas2 from the github user bhargavchippada [1], as this package is able to visualised the network with specific edge weight. This is done to see if there is a visual difference between using edge weight or not. An example of the edge weight influence can be seen below: 
 
-We suspect that the graph will be complete, meaning all possible edges will be present, as an edge will be create if the two members have vote on the same roll call in their congress term. Thus, two methods to lower the density of the network will be investigated, namely global minimum threshold and extracting the multiscale backbone. These methods are both inspired by M. Ángeles Serrano et al. (2009) [2].   
+-- INSERT edgeweight influence fig -- 
+
+Next, the degree of the network will be analysed. We suspect that the graph will be complete, meaning all possible edges will be present, as an edge will be create if the two members have vote on the same roll call in their congress term. Thus, two methods to lower the density of the network will be investigated, namely global minimum threshold and extracting the multiscale backbone. These methods are both inspired by M. Ángeles Serrano et al. (2009) [2].   
 
 **Step 3:**
 The first method to investigate is the *Global minimum threshold*, which sets a global minimum threshold for edge weights for edges to be included in the graph. In this project we use a given percentile of the edge weight as the threshold.  The goal is to keep as much information in the graph as possible, thus edges with a specific edge weight below the threshold will be removed as these are assumed to be less meaningful to the network. 
@@ -157,11 +159,18 @@ The first method to investigate is the *Global minimum threshold*, which sets a 
 Next, the sensitivity of the global edge weight threshold will be investigated by calculating the remaining nodes and edges for various percentiles. The acceptance criteria for the optimal percentile is to choose the highest percentile while keeping all nodes, as we do not want to exclude any members. 
 The Global minimum threshold will then be applied to the graph with the optimal percentile, which then will be analysed by the number of node and edges, the degree distribution and visualising the graph with an edge weight. 
 
+--FA2thres --
+
 The new graph will also be compared to a random network with the same number of nodes and probability of connection, to see if it approximates a random network. Last, we will estimate whether the graph is in the subcritical regime (like a real random network), critical point, supercritical regime or connected regime from section 3.6 "The Evolution of a random Network [3].  
+
+--comp_thres--
+
+Looking at these, it appears that our network with the global threshhold for edge weights approximates that of a random network, however it is difficult to conclude on the distribution. We would expect a real random to be in the supercritical regime, however in our case the network is more connected, and the giant component actually consumes all nodes. We checked this by calculating whtehr <k> > ln(N), and we found that <k> = 182.81 and ln(N) = 6.03, thus we have 1 connected component (see notebook for calculation). 
+  
 
 
 **Step 4:** 
-The method of extracting the multiscale backbone is based on a algorithm which select significant edges based on edge weights and is inspired by inspired by M. Ángeles Serrano et al. (2009) [2]. This is done by using a disparity filter to select the significant edges.  The code used to implement this method is inspired by GitHub user 'aekpalakorn' and is adapted for our purposes. 
+The method of extracting the multiscale backbone is based on a algorithm which selects significant edges based on edge weights and is inspired by inspired by M. Ángeles Serrano et al. (2009) [2]. This is done by using a disparity filter to select the significant edges.  The code used to implement this method is inspired by GitHub user 'aekpalakorn' and is adapted for our purposes. 
 
 The goal of this method is to identify the most significant edges for each node rather than simply choose the edges with the highest edge weights in the entire network. The most significant edges are identified by calculating a significance value (alpha) per edge. Alpha is a measure for how significant the weight of a given edge is compared to the rest of the edges linked to a specific node, and is calculated as follows:
 
@@ -172,10 +181,21 @@ where k is degree, x is the edge weight and <img src="https://latex.codecogs.co
 All edges in the network will then have an alpha value. Thus, it is now possible to set an alpha threshold such that edges with an alpha value below the alpha threshold will me removed. As with the global minimum threshold method, we will also perform a sensitivity analysis of the alpha threshold to find the optimal alpha threshold value. This will also be done by calculating the remaining nodes, edges for various alpha thresholds. The accept criteria for the optimal alpha threshold is to choose the lowest alpha value for which all nodes remains,  as we do not want to exclude any congress members. 
 The found optimal alpha threshold value will then be used in the extracting the multiscale backbone method, so we can analyse the graph. This will be done the same way as for the global minimum threshold method, namely by the number of node and edges, the degree distribution and visualising the graph with an edge weight. 
 
+-- FAdisp--
+
+
 The graph created with  extracting the multiscale backbone will also be compared to a random network with the same number of nodes and probability of connection, to see if it follows that of a random network. Last, we will again estimate whether the graph is in the subcritical regime, critical point, supercritical regime or connected regime from section 3.6 "The Evolution of a random Network [3].  
+
+-- comp_disp
+
+Interestingly, the disparity graph results in a denser degree distribution, in the sense that more nodes have higher degrees compared to a random network. This is probably caused by the fact that all intra-party nodes are connected, and there are hardly any edges crossing the parties, therefore we do not see any 'low/mid degree' nodes.
 
 **Step 5:** 
 Next, we have to investigate which edge reduction method is preferred. This will be done by visualising the remaining weight and edges versus the remaining nodes for the found optimal percentile and optimal alpha value. We will then argue which method will be the preferred to use to create the final graphs. 
+
+--comp--
+
+Looking at the plots, it is evident that for fewer edges, the disparity maintains more total edge weight as well as nodes, therefore this method for reducing number of edges is preferred. Furthermore, from an analytical standpoint it makes more intuitive sense to have a measure of significance rather than applying an arbitrary global threshold to uniformly remove edges.
 
 **Step 6:**
 For both  global minimum threshold  and extracting the multiscale backbone methods, it is important that the graph for different congress all have either the same percentile or same alpha, as it makes it more reliable to compare the congress. Thus, for global minimum threshold method the optimal global percentile will be found as the highest percentile for which all nodes still remains. Whereas for the extracting the multiscale backbone method the optimal global alpha is found as the lowest alpha for which all nodes still remains. 
@@ -210,11 +230,21 @@ In the tabel below, we have indicated our measures for determining if a partitio
 |---------------------|-----------------------------------------|
 | Negative Modularity | - When each node is assigned to a different community, the modularity becomes negative.  |
 
+We found the following modularity measures over the different terms:
+
+-- INSERT MODU FIGURE -- 
+
+We notice that the modularity varies greatly, with a minimum at term 111 to a maximum around terms 113-114. In terms 112-115, we have a high modularity, hence the partitions must be more polarized since the partitions are more distinct. Before term 110 and during the current term, we see a modularity score under the threshold, indicating that the partitions are less distinct. It is important to remember that the number of bills in each term also varies, which could also be a contributing factor. 
+
 **Step 3**: 
 The last step was to visualize the graphs where node colors were be based on the partition instead of the party of the members. We were hoping to see a clear distinct between the partition where they have a higher modularity compared to those with a lower.
 
+-- FA2111_114 -- 
+
+The graph above is an example of a partition plot from terms 111 and 114 where we can see that the partitions are more distinct (thus polarized) in term 114 where we also saw a higher modularity. 
+
 ## Text Analysis 
-he bill/issue summaries are used to perform text analysis by using the partition of the graph found in Analysis 2. This will hopefully help us to understand if there is a voting pattern over time for the partitions, as well as what topics each partitions stands for. The following steps are used to reach that goal.
+The bill/issue summaries are used to perform text analysis by using the partition of the graph found in Analysis 2. This aims to help us understand if there is a voting pattern over time for the partitions, as well as what topics each partitions stands for. The following steps were used to reach that goal:
 
 **Step 1**:
 Some data processing is necessary to extract the bill/issue summaries, which are more descriptive for the specific partitions. 
@@ -226,7 +256,11 @@ Now, the wanted roll calls have been found and their corresponding summaries, wh
 
 This is done by tokenize the summaries and then remove stop words, common bill words, years, punctuation and single characters to only include word, which should have more meaning in the summaries. 
 
-Lastly, we want to investigate whether a stemming method should be used. In this project the result from the Porter Stemmer algorithm in the nltk package will be used [4].
+Lastly, we want to investigate whether a stemming method should be used. In this project the result from the Porter Stemmer algorithm in the nltk package will be used [4]. We generated two examples of wordclouds, one with stemming and one without:
+
+--STEM--
+
+Based on these finding, we evaluate that there is no significant difference in using stemming or not in this example. If this was to be optimized, we would need a stemming algorithm that was indistry specific. Thus, we continue without stemming as we evaluate the extra computational power is not necessary in this example.
 
 **Step 3:** 
 The Text Analysis can now be performed on the data. The end goal is to have a word cloud which reflects the most important words in the specific partition compared to the other partition in that term. We use term frequency-inverse document frequency (TF-IDF) to find the weighting factor for the words in the partition. 
@@ -245,7 +279,7 @@ Where $f_{t,d}$ is the raw count of the word in a partition, N is the number of 
 It is also worth noting that we are currently operating on 'clean' text, however the IDF function indirectly handles stop words by assigning them a weight of 0, if they occur in all of the documents in question.
 
 **Step 4:** 
-The word cloud can now be generated based on the TF-IDF calculations for each partition in every term. This will hopefully visualised a distinct voting pattern for each partition over time. 
+The word cloud can now be generated based on the TF-IDF calculations for each partition in every term. This will hopefully visualise a distinct voting pattern for each partition over time. The resulting wordclouds can be seen under [Findings](#Findings). 
 
 
 ## Where do I find the data?
