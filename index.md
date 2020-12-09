@@ -204,7 +204,7 @@ The new graph will also be compared to a random network with the same number of 
 
 ![image](Images/comp_thres.png)
 
-Looking at these, it appears that our network with the global threshhold for edge weights approximates that of a random network, however it is difficult to conclude on the distribution. We would expect a real random to be in the supercritical regime, however in our case the network is more connected, and the giant component actually consumes all nodes. We checked this by calculating whtehr <k> > ln(N), and we found that <k> = 182.81 and ln(N) = 6.03, thus we have 1 connected component (see notebook for calculation). 
+Looking at these, it appears that our network with the global threshhold for edge weights approximates that of a random network, however it is difficult to conclude on the distribution. We would expect a real random to be in the supercritical regime, however in our case the network is more connected, and the giant component actually consumes all nodes. We checked this by calculating whether <img src="https://latex.codecogs.com/gif.latex?<k> > ln(N)"/> , and we found that <img src="https://latex.codecogs.com/gif.latex?<k>" = 182.81 and "ln(N)" 6.03 />, thus we have 1 connected component (see notebook for calculation). 
   
 
 
@@ -217,13 +217,13 @@ The goal of this method is to identify the most significant edges for each node 
 
 where k is degree, x is the edge weight and <img src="https://latex.codecogs.com/gif.latex?p_{ij}" title="p_{ij}" /> is the relative weight of the edge out of the total edge weights for that given node.
 
-All edges in the network will then have an alpha value. Thus, it is now possible to set an alpha threshold such that edges with an alpha value below the alpha threshold will me removed. As with the global minimum threshold method, we will also perform a sensitivity analysis of the alpha threshold to find the optimal alpha threshold value. This will also be done by calculating the remaining nodes, edges for various alpha thresholds. The accept criteria for the optimal alpha threshold is to choose the lowest alpha value for which all nodes remains,  as we do not want to exclude any congress members. 
+All edges in the network will then have an alpha value. Thus, it is now possible to set an alpha threshold such that edges with an alpha value below the alpha threshold will be removed. As with the global minimum threshold method, we will also perform a sensitivity analysis of the alpha threshold to find the optimal alpha threshold value. This will also be done by calculating the remaining nodes, edges for various alpha thresholds. The accept criteria for the optimal alpha threshold is to choose the lowest alpha value for which all nodes remains,  as we do not want to exclude any congress members. 
+
 The found optimal alpha threshold value will then be used in the extracting the multiscale backbone method, so we can analyse the graph. This will be done the same way as for the global minimum threshold method, namely by the number of node and edges, the degree distribution and visualising the graph with an edge weight. 
 
 ![image](Images/FAdisp.png)
 
-
-The graph created with  extracting the multiscale backbone will also be compared to a random network with the same number of nodes and probability of connection, to see if it follows that of a random network. Last, we will again estimate whether the graph is in the subcritical regime, critical point, supercritical regime or connected regime from section 3.6 "The Evolution of a random Network [3].  
+The graph created with extracting the multiscale backbone method will also be compared to a random network with the same number of nodes and probability of connection, to see if it follows that of a random network. Last, we will again estimate whether the graph is in the subcritical regime, critical point, supercritical regime or connected regime from section 3.6 "The Evolution of a random Network [3].  
 
 ![image](Images/comp_disp.png)
 
@@ -234,10 +234,10 @@ Next, we have to investigate which edge reduction method is preferred. This will
 
 ![image](Images/comp.png)
 
-Looking at the plots, it is evident that for fewer edges, the disparity maintains more total edge weight as well as nodes, therefore this method for reducing number of edges is preferred. Furthermore, from an analytical standpoint it makes more intuitive sense to have a measure of significance rather than applying an arbitrary global threshold to uniformly remove edges.
+Looking at the figures, it is evident that for fewer edges, the disparity maintains more total edge weight as well as nodes, therefore this method for reducing number of edges is preferred. Furthermore, from an analytical standpoint it makes more intuitive sense to have a measure of significance rather than applying an arbitrary global threshold to uniformly remove edges.
 
 **Step 6:**
-For both  global minimum threshold  and extracting the multiscale backbone methods, it is important that the graph for different congress all have either the same percentile or same alpha, as it makes it more reliable to compare the congress. Thus, for global minimum threshold method the optimal global percentile will be found as the highest percentile for which all nodes still remains. Whereas for the extracting the multiscale backbone method the optimal global alpha is found as the lowest alpha for which all nodes still remains. 
+The method extracting the multiscale backbone methods was found to be the preferred. It is important that the graph for different congress all have the same alpha, as it makes it more reliable to compare the congress. Thus, for the extracting the multiscale backbone method the optimal global alpha is found as the lowest alpha for which all nodes still remains in all the congress. 
 
 **Step7:** 
 It will be easier to interpret the result in the following Community Detection and Text analysis if the edge weights are the roll calls which the members have both voted yes to. If we use agree as edge weight, a roll call could be in both partitions (communities), as one partition could all have voted yes and the other could have voted no. Hence, there will be no distinctive difference in the Text Analysis. Thus, the *agree yes* will be used as edge weight throughout the rest of the project. It will then be investigated whether the found assumption still hold with another edge weight. 
@@ -248,14 +248,14 @@ It will be easier to interpret the result in the following Community Detection a
 This section has been divided into three steps for an easier walk-through.
 
 **Step 1:** 
-To further examine the defined graphs for each term in Analysis 1, the best partition (separation into smaller communities) of the nodes will be found using the Louvain heuristics algorithm from section "The Louvian algorithm" in Barabási et. al, ch. 9 [3]. The goal is to perform community detection which aims to uncover inherent community structure of the graphs.  Thus, the number and size of the communities are not predefined but needs to be found. 
+To further examine the defined graphs for each congress in Analysis 1, the best partition (separation into smaller communities) of the nodes will be found using the Louvain heuristics algorithm from section "The Louvian algorithm" in Barabási et. al, ch. 9 [3]. The goal is to perform community detection which aims to uncover inherent community structure of the graphs. Thus, the number and size of the communities are not predefined but needs to be found. 
 This is done by creating a dendogram, which creates a tree where each level is a partition of the graph nodes. Level zero will be the first partition and contains the smallest communities. The best partition will be the highest level, and higher level results in bigger communities.  
 
 The found communities will then be evaluated by calculating the modularity (a measure for how distinct the communities are) and by performing text analysis.  
 
 **Step 2:**
 When the partitions for each graph have been found, they can be evaluated by calculating the modularity using equation 9.12 from Barabási et. al [3]. Modularity is a measure of the quality of the partition. Therefore, the modularity is a method to decide if a community partition is better than other partitions. 
-We will also use the modularity method as a comparison method between the graph from the different terms, as we interprets a high modularity as more distinct partitions. Thus, if there is a change from a low modularity to a higher throughout the terms, this could indicate that the congress has become more polarized.  
+We will also use the modularity method as a comparison method between the graph from the different congress, as we interprets a high modularity as more distinct partitions. Thus, if there is a change from a low modularity to a higher throughout the terms, this could indicate that the congress has become more polarized.  
 
 In the tabel below, we have indicated our measures for determining if a partition is good or not. We are basing these numbers off image 9.16 in Barabási et. al [3]. These could also be derived for our example, using the formulas in the same chapter.
 
@@ -276,7 +276,7 @@ We found the following modularity measures over the different terms:
 We notice that the modularity varies greatly, with a minimum at term 111 to a maximum around terms 113-114. In terms 112-115, we have a high modularity, hence the partitions must be more polarized since the partitions are more distinct. Before term 110 and during the current term, we see a modularity score under the threshold, indicating that the partitions are less distinct. It is important to remember that the number of bills in each term also varies, which could also be a contributing factor. 
 
 **Step 3**: 
-The last step was to visualize the graphs where node colors were be based on the partition instead of the party of the members. We were hoping to see a clear distinct between the partition where they have a higher modularity compared to those with a lower.
+The last step is to visualize the graphs where node colors are based on the partition instead of the party of the members. We were hoping to see a clear distinct between the partition where they have a higher modularity compared to those with a lower.
 
 ![image](Images/FA2111_114.png) 
 
@@ -288,11 +288,10 @@ The bill/issue summaries are used to perform text analysis by using the partitio
 **Step 1**:
 Some data processing is necessary to extract the bill/issue summaries, which are more descriptive for the specific partitions. 
 
-First, the voting for the rolls calls information is in the edges, as the edges between two nodes are the rolls calls they both have voted yes to, and the partition information is on the nodes. Thus, we need to extract the edges between two nodes, which are in the same partition. This will give extremely many roll calls with different occurrences, as only two members have to have voted yes for the roll call to be considered.  Therefore,  the roll calls will receive a weight in the form of their frequency to accommodate this problem as we are interested in the roll calls which they agree to vote yes to the most. This way we can extract the top quantile of roll calls which should be the ones which are most descriptive for the specific partitions.
+First, the voting for the rolls calls information is in the edges, as the edges between two nodes are the rolls calls they both have voted yes to, and the partition information is on the nodes. Thus, we need to extract the edges between two nodes, where the two nodes are in the same partition. This will give extremely many roll calls with different occurrences, as only two members have to have voted yes for the roll call to be considered. Therefore, the roll calls will receive a weight in the form of their frequency to accommodate this problem as we are interested in the roll calls which they agree to vote yes to the most. This way we can extract the top quantile of roll calls which should be the ones which are most descriptive for the specific partitions.
 
 **Step 2:** 
-Now, the wanted roll calls have been found and their corresponding summaries, which we then have to clean before any text analysis can be performed. 
-
+Now, the wanted roll calls have been found and their corresponding summaries. The summaries needs to be cleaned before any text analysis can be performed. 
 This is done by tokenize the summaries and then remove stop words, common bill words, years, punctuation and single characters to only include word, which should have more meaning in the summaries. 
 
 Lastly, we want to investigate whether a stemming method should be used. In this project the result from the Porter Stemmer algorithm in the nltk package will be used [4]. We generated two examples of wordclouds, one with stemming and one without:
@@ -314,7 +313,7 @@ The TF-IDF components are:
 
 Where <img src="https://latex.codecogs.com/gif.latex?f_{t,d}" title="f_{t,d}" /> is the raw count of the word in a partition, N is the number of partitions and <img src="https://latex.codecogs.com/gif.latex?n_t" title="n_t" /> is the number of documents containing term t. 
 
-Multiplying the term frequency with the IDF weights will give the final TF-IDF counts fr each word, which will be used in the wordcloud to score each word. 
+Multiplying the term frequency with the IDF weights will give the final TF-IDF counts for each word, which will be used in the wordcloud to score each word. 
 
 It is worth noting that we are currently operating on 'clean' text, however the IDF function indirectly handles stop words by assigning them a weight of 0, if they occur in all of the documents in question.
 
