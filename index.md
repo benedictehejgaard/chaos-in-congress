@@ -181,12 +181,12 @@ where k is degree, x is the edge weight and <img src="https://latex.codecogs.co
 All edges in the network will then have an alpha value. Thus, it is now possible to set an alpha threshold such that edges with an alpha value below the alpha threshold will me removed. As with the global minimum threshold method, we will also perform a sensitivity analysis of the alpha threshold to find the optimal alpha threshold value. This will also be done by calculating the remaining nodes, edges for various alpha thresholds. The accept criteria for the optimal alpha threshold is to choose the lowest alpha value for which all nodes remains,  as we do not want to exclude any congress members. 
 The found optimal alpha threshold value will then be used in the extracting the multiscale backbone method, so we can analyse the graph. This will be done the same way as for the global minimum threshold method, namely by the number of node and edges, the degree distribution and visualising the graph with an edge weight. 
 
--- FAdisp--
+![image](Images/FAdisp.png)
 
 
 The graph created with  extracting the multiscale backbone will also be compared to a random network with the same number of nodes and probability of connection, to see if it follows that of a random network. Last, we will again estimate whether the graph is in the subcritical regime, critical point, supercritical regime or connected regime from section 3.6 "The Evolution of a random Network [3].  
 
--- comp_disp
+![image](Images/comp_disp.png)
 
 Interestingly, the disparity graph results in a denser degree distribution, in the sense that more nodes have higher degrees compared to a random network. This is probably caused by the fact that all intra-party nodes are connected, and there are hardly any edges crossing the parties, therefore we do not see any 'low/mid degree' nodes.
 
