@@ -179,7 +179,7 @@ Next, we have to investigate which edge reduction method is preferred. This will
 **Step 6:**
 For both  global minimum threshold  and extracting the multiscale backbone methods, it is important that the graph for different congress all have either the same percentile or same alpha, as it makes it more reliable to compare the congress. Thus, for global minimum threshold method the optimal global percentile will be found as the highest percentile for which all nodes still remains. Whereas for the extracting the multiscale backbone method the optimal global alpha is found as the lowest alpha for which all nodes still remains. 
 
-Step7: 
+**Step7:** 
 It will be easier to interpret the result in the following Community Detection and Text analysis if the edge weights are the roll calls which the members have both voted yes to. If we use agree as edge weight, a roll call could be in both partitions (communities), as one partition could all have voted yes and the other could have voted no. Hence, there will be no distinctive difference in the Text Analysis. Thus, the *agree yes* will be used as edge weight throughout the rest of the project. It will then be investigated whether the found assumption still hold with another edge weight. 
 
 
