@@ -1,4 +1,4 @@
-[EXPLAINER NOTEBOOK](https://nbviewer.jupyter.org/github/benedictehejgaard/chaos-in-congress/blob/gh-pages/EXPLAINER_NOTEBOOK.ipynb)
+[EXPLAINER NOTEBOOK](https://nbviewer.jupyter.org/github/ajoerck/explainer_repo/blob/main/final_explainer_notebook.ipynb)
 # Using Network Analysis and Natural Language Processing to help you understand the US Congress.
 
 With the 2020 US election being close to finished, we once again find ourselves at the end of a long period of time where US politics has been on everyone's lips. But for us Danes, the US political system can seem...well, quite chaotic? In the light of the recent election, a term you might have heard come across is the United States Congress. Curious to know more about the US Congress - in particular the House of Representatives? Look no further!
@@ -46,7 +46,7 @@ Below, you will find a simple overview of the above described termilogy:
 
 ## Findings
 
-Please note, a detailed and thorough explanation of the underlying steps, codes and analysis to produce all these findings can be found under [network analysis](#Network Analysis), [text analysis](#Text Analysis) as well at the [explainer notebook](#Where-do-I-find-the-master-notebook-that-rigurously-explains-this-entire-analysis?) (advanced). 
+Please note, a detailed and thorough explanation of the underlying steps, codes and analysis to produce all these findings can be found under network analysis, text analysis as well at the explainer notebook (advanced). 
 
 To examine whether polarization exists, we created a network of each representative, based on their voting pattern, using the *ForceAtlas2* library [1]. Each node (the bubble) in the network represents a member of the House in the given term, and each edge (line between bubbles) represents a link between two members. Each time two members have voted *yes* for the same bill, they get a link, meaning that the "weights" each edge have depends on how much each member agrees on bills with each other. The closer two nodes are, the more they agree with each other. To reduce the density of the network while still remaining all information, we have used two approaches inspired by M. Ángeles Serrano et al. (2009)[2]. Namely, setting a global minimum threshold for edgeweights, and using an algorithm to select significant edges based on edge weights. Please see advanced sections and the explainer notebook for further information. 
 
@@ -56,13 +56,13 @@ In the networks below, <span style="color:blue">Democratic members have blue nod
 
 In the networks, we clearly see the two distinct parties, with a few outliers. We also notice that term 111 seemed to be less polarized as the nodes are closer, whereas term 114 is more polarized (two more distinct node-centers). Today, we also see two poles, with the democratic members seeming less polarized (more outliers) than the republicans. 
 
-We then examined if we could find any communities within the networks, discarding the political parties. If we were able to find communities within the networks, and see that they were divided based on their political party, this would contribute to our hypothesis that there is polarization in the House. In order to do so, we created partitions/communities in the network in each term (see [Network Analysis](#Network-Analysis) for further details). Furthermore, we calculated a so-called modularity score for each partition, which is a measure of how good the partition is. 
+We then examined if we could find any communities within the networks, discarding the political parties. If we were able to find communities within the networks, and see that they were divided based on their political party, this would contribute to our hypothesis that there is polarization in the House. In order to do so, we created partitions/communities in the network in each term (see Network Analysis for further details). Furthermore, we calculated a so-called modularity score for each partition, which is a measure of how good the partition is. 
 
 ![image](Images/FA2111_114.png)
 
 In the figure above, we have displayed the community partitions for terms 111 and terms 114. We have colored the partitions green and purple, and the edges grey if they connect to a node of same partition, and blue if they connect to a node of a different partition. Terms 111 and 114 are interesting in particular, as term 111 saw the lowest modularity score (least polarized) and term 114 saw the highest (most polarized) - which is evident from the plot. 
 
-Lastly, we looked into most frequent words in the summaries that each member votes *yes* to. Below, we show the wordclouds (shaped like the US) of each term for each partition, along with a count of party members is each partition. The larger the word, the more frequent it is. Please see section [text analysis](#Text-Analysis) for further details. 
+Lastly, we looked into most frequent words in the summaries that each member votes *yes* to. Below, we show the wordclouds (shaped like the US) of each term for each partition, along with a count of party members is each partition. The larger the word, the more frequent it is. Please see section *text analysis* for further details. 
 
 Below each wordcloud, we will give some insights on trends in each term.
 
@@ -328,7 +328,7 @@ All data is retrieved from [www.congress.gov](www.congress.gov)
 
 
 ## Where do I find the master notebook that rigorously  explains this entire analysis? 
-A full description of the entire analysis can be retrieved [here](https://nbviewer.jupyter.org/github/benedictehejgaard/chaos-in-congress/blob/gh-pages/EXPLAINER_NOTEBOOK.ipynb). 
+A full description of the entire analysis can be retrieved [here](https://nbviewer.jupyter.org/github/ajoerck/explainer_repo/blob/main/final_explainer_notebook.ipynb). 
 
 NOTE: if for some reason the above link should fail, the EXPLAINER NOTEBOOK can also be accessed on Google Colab [here](https://colab.research.google.com/drive/1Kpv8813vWAx9kNPCePU6kxGiHQWQqAw6?usp=sharing) (NBViewer was lagging as well as outputting a strange table format at the time of upload)
 
