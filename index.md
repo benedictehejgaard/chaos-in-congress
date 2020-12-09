@@ -21,6 +21,7 @@ On this website, we wish to give you an overview of the voting patterns in the U
 5. [Text Analysis](#Text-Analysis) (advanced)
 6. [Download the Dataset](#Where-do-I-find-the-data?) 
 7. [Download the Entire Workbook](#Where-do-I-find-the-master-notebook-that-rigurously-explains-this-entire-analysis?)
+8. [References](#References)
 
 
 ## Context and termonology
@@ -259,6 +260,7 @@ A full description of the entire analysis can be retrieved [here](https://nbview
 ## References 
 
 Used on this page: 
+
 [1] Bhargav Chippada, forceatlas2, (2020), Github Repository, https://github.com/bhargavchippada/forceatlas2 
 
 [2] Serrano, M. Ángeles, Marián Boguná, and Alessandro Vespignani. "Extracting the multiscale backbone of complex weighted networks." *Proceedings of the national academy of sciences* 106.16 (2009): 6483-6488.
@@ -267,7 +269,8 @@ Used on this page:
 
 [4] Bird, Steven, Edward Loper and Ewan Klein (2009), *Natural Language Processing with Python*.  O'Reilly Media Inc.
 
-Additionally used in attached notebooks: 
+Additionally used in attached notebooks:
+
 - Lobodemonte (Erik), Congress Scraping, (2020), GitHub Repository, https://github.com/lobodemonte/big-data-for-public-policy 
 - "Congress Profiles: US House of Representatives: History, Art & Archives." Web. 09 Dec. 2020. Accessed at https://history.house.gov/Congressional-Overview/Profiles/115th/ 
 - Aekpalakorn (aek), python-backbone-network, (2016), GitHub Repository, https://github.com/aekpalakorn/python-backbone-network 
