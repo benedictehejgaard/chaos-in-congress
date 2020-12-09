@@ -1,4 +1,7 @@
 # Using Network Analysis and Natural Language Processing to help you understand the US Congress.
+___
+[EXPLAINER NOTEBOOK](https://nbviewer.jupyter.org/github/benedictehejgaard/chaos-in-congress/blob/gh-pages/EXPLAINER_NOTEBOOK.ipynb)
+___
 
 With the 2020 US election being close to finished, we once again find ourselves at the end of a long period of time where US politics has been on everyones lips. But for us Danes, the US political system can seem.. well, quite chaotic? In the light of the recent election, a term you might have heard come across is the United States Congress. Curious to know more about the US Congress - in particular the House of Representatives? Look no further!
 
@@ -13,13 +16,13 @@ On this website, we wish to give you an overview of the voting patterns in the U
 **Intrigued? Keep on reading for insights on our findings!** 
 
 ## Navigating the page 
-1. [Context and termonology](#Context and termonology)
+1. [Context and termonology](#Context-and-termonology)
 2. [Findings](https://github.com/benedictehejgaard/chaos-in-congress/blob/gh-pages/index.md#findings)
-3. [Data Used](#The Data Used) 
-4. [Network Analysis](#Network Analysis) (advanced)
-5. [Text Analysis](#Text Analysis) (advanced)
-6. [Download the Dataset](#Where do I find the data?) 
-7. [Download the Entire Workbook](#Where do I find the master notebook that rigurously explains this entire analysis?)
+3. [Data Used](#The-Data-Used) 
+4. [Network Analysis](#Network-Analysis) (advanced)
+5. [Text Analysis](#Text-Analysis) (advanced)
+6. [Download the Dataset](#Where-do-I-find-the-data?) 
+7. [Download the Entire Workbook](#Where-do-I-find-the-master-notebook-that-rigurously-explains-this-entire-analysis?)
 
 
 ## Context and termonology
@@ -42,7 +45,7 @@ Below, you will find a simple overview of the above described termology:
 
 ## Findings
 
-Please note, a detailed and thorough explanation of the underlying steps, codes and analysis to produce all these findings can be found under [network analysis](#Network Analysis), [text analysis](#Text Analysis) as well at the [explainer notebook](#Where do I find the master notebook that rigurously explains this entire analysis?) (advanced). 
+Please note, a detailed and thorough explanation of the underlying steps, codes and analysis to produce all these findings can be found under [network analysis](#Network Analysis), [text analysis](#Text Analysis) as well at the [explainer notebook](#Where-do-I-find-the-master-notebook-that-rigurously-explains-this-entire-analysis?) (advanced). 
 
 To examine whether polarization exists, we created a network of each representative, based on their voting pattern, using the *ForceAtlas2* library(TODO REF). Each node (the bubble) in the network represents a member of the House in the given term, and each edge (line between bubbles) represents a link between two members. Each time two members have voted *yes* for the same bill, they get a link, meaning that the "weights" each edge has depends on how much each member agress on bills with eachother. TODO Add about why some are further away. To reduce the density of the network while still remaining all information, we have used two approaces inspired by M. Ángeles Serrano et al. (2009)(TODO REF). Namely, setting a global minimum threshold for edgeweights, and using an algorithm to select significant edges based on edge weights. Please see advanced sections and the explainer notebook for further information. 
 
@@ -249,7 +252,9 @@ The word cloud can now be generated based on the TF-IDF calculations for each pa
 ## Where do I find the data?
 The four datasets used for the analyses can be downloaded from our github repository [here](https://github.com/benedictehejgaard/chaos-in-congress/tree/gh-pages/data). 
 
+All data is retrieved from [www.congress.gov](www.congress.gov)
+
 
 ## Where do I find the master notebook that rigurously explains this entire analysis? 
-A full description of the entire analysis can be retrieved [here](https://nbviewer.jupyter.org/github/benedictehejgaard/chaos-in-congress/blob/gh-pages/WebsiteTest.ipynb). 
+A full description of the entire analysis can be retrieved [here](https://nbviewer.jupyter.org/github/benedictehejgaard/chaos-in-congress/blob/gh-pages/EXPLAINER_NOTEBOOK.ipynb). 
 
