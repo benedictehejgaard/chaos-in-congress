@@ -133,15 +133,50 @@ Further basic statistics as well as a walk-through of how these were found can b
 ### Step 1 - Building the Network 
 
 Before we are able to test our hypotheses, we have to build a network. As previously mentioned, we wish to create a network of representatives, connected by the roll calls they have voted for. We have tested several heuristics to achieve this goal. Prior to testing these, the data was manipulated to a desirable format to construct the edges. Namely, we are interested in constructing node-pairs and counting how often they agree/disagree on bills in the following ways:
+	• Agree yes: Both voting yes
+	• Agree no: Both voting no
+	• Agree: Total agree yes and agree no
+	• Disagree: One yes, one no
+In the following, we will take you through a highlevel overview of the network analysis. If you wish to get an in-depth explanation of how this was carried out, along with the sequence of functions that were made to carry it out, you can download the Explainer Notebook below.
 
-* Agree yes: Both voting yes
-* Agree no: Both voting no
-* Agree: Total agree yes and agree no
-* Disagree: One yes, one no
+Step 1: 
+First, the network for each congress will be created, where the nodes are define as the congress members and the edges are the roll calls which they have both voted on. There will be some additional information on both the nodes and edges. The nodes will also have information about party and state for each member. The edges will have a few possible edge weight as  above; Agree yes, Agree no, Agree and Disagree.  
+Additionally, we will also save the specific roll calls edges between each node, where both members have voted yes. As this information will be used in the next analysis. 
 
-In the following, we will take you through a highlevel overview of the network analysis. If you wish to get an in-depth explanation of how this was carried out, along with the sequence of functions that were made to carry it out, you can download the Explainer Notebook below. 
+Step: 2 
+The new constructed network will then be visualised using a modified version of ForceAtlas2 from the github user bhargavchippada (REF), as this package is able to visualised the network with specific edge weight. This is done to see if there is a visual difference between using edge weight or not. Next, the degree of the network will be analysed.  
 
--- Fill in about creating the network -- 
+We suspect that the graph will be complete, meaning all possible edges will be present, as an edge will be create if the two members have vote on the same roll call in their congress term. Thus, two methods to lower the density of the network will be investigated, namely global minimum threshold and extracting the multiscale backbone. These methods are both inspired by M. Ángeles Serrano et al. (2009) [REF].   
+
+Step 3:
+The first method to investigate is the Global minimum threshold, which sets a global minimum threshold for edge weights for edges to be included in the graph. In this project we use a given percentile of the edge weight as the threshold.  The goal is to keep as much information in the graph as possible, thus edges with a specific edge weight below the threshold will be removed as these are assumed to be less meaningful to the network. 
+Next, the sensitivity of the global edge weight threshold will be investigated by calculating the remaining nodes, edges for various percentiles. The accept criteria for the optimal percentile is  to choose the highest percentile while keeping all nodes, as we do not want to exclude any members. 
+The Global minimum threshold will then be applied to the graph with the optimal percentile, which then will be analysed by the number of node and edges, the degree distribution and visualising the graph with an edge weight. 
+
+The new graph will also be compared to a random network with the same number of nodes and probability of connection, to see if it follow…** WHY***. Last, we will estimate whether the graph is in the subcritical regime, critical point, supercritical regime or connected regime from section 3.6 "The Evolution of a random Network [REF - Network book- Albert-László, et al, chapter 3.6 [1]].  
+
+Step 4: 
+The method extracting the multiscale backbone is based on a algorithm which select significant edges based on edge weights and is inspired by inspired by M. Ángeles Serrano et al. (2009). This is done by using a disparity filter to select the significant edges.  The code used to implement this method is inspired by GitHub user 'aekpalakorn' and is adapted for our purposes. 
+
+The goal of this method is to identify the most significant edges for each node rather than simply choose the edges with the highest edge weights in the entire network. The most significant edges are identified by calculating a significance value (alpha) per edge. Alpha is a measure for how significant the weight of a given edge is compared to the rest of the edges linked to a specific node, and is calculated as follows:
+** INSERT FORMULAR **
+where k is degree, x is the edge weight and 𝑝𝑖𝑗 is the relative weight of the edge out of the total edge weights for that given node.
+
+All edges in the network will then have an alpha value. Thus, it is now possible to set an alpha threshold such that edges with an alpha value below the alpha threshold will me removed.   
+As with the global minimum threshold method, we will also perform a sensitivity analysis of the alpha threshold to find the optimal alpha threshold value. This will also be done by calculating the remaining nodes, edges for various alpha thresholds. The accept criteria for the optimal alpha threshold is to choose the lowest alpha value for which all nodes remains,  as we do not want to exclude any congress members. 
+The found optimal alpha threshold value will then be used in the extracting the multiscale backbone method, so we can analyse the graph. This will be done the sae way as for the global minimum threshold method, namely by the number of node and edges, the degree distribution and visualising the graph with an edge weight. 
+
+The graph created with  extracting the multiscale backbone will also be compared to a random network with the same number of nodes and probability of connection, to see if it follow…*** WHY***. Last, we will again estimate whether the graph is in the subcritical regime, critical point, supercritical regime or connected regime from section 3.6 "The Evolution of a random Network [REF - Network book- Albert-László, et al, chapter 3.6 [1]].  
+
+Step 5: 
+Next, we have to investigate which edge reduction method is preferred. This will be done by visualising the remaining weight and edges versus the remaining nodes for the found optimal percentile and optimal alpha value. We will then argue which method will be the preferred to use to create the final graphs. 
+
+Step 6:
+For both  global minimum threshold  and extracting the multiscale backbone methods, it is important that the graph for different congress all have either the same percentile or same alpha, as it makes it more reliable to compare the congress. Thus, for global minimum threshold method the optimal global percentile will be found as the highest percentile for which all nodes still remains. Whereas for the extracting the multiscale backbone method the optimal global alpha is found as the lowest alpha for which all nodes still remains. 
+
+Step7: 
+It will be easier to interpret the result in the following Community Detection and Text analysis if the edge weights are the roll calls which the members have both voted yes to. If we use agree as edge weight, a roll call could be in both partition, as one partition could all have voted yes and the other could have voted no. Hence, there will be no distinctive difference in the Text Analysis. Thus,  the agree yes will be used as edge weight throughout the rest of the project. It will then be investigated whether the found assumption still hold with another edge weight. 
+
 
 ### Step 2 - Analyzing the Network 
 
