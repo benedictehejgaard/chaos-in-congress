@@ -163,10 +163,6 @@ The method of extracting the multiscale backbone is based on a algorithm which s
 
 The goal of this method is to identify the most significant edges for each node rather than simply choose the edges with the highest edge weights in the entire network. The most significant edges are identified by calculating a significance value (alpha) per edge. Alpha is a measure for how significant the weight of a given edge is compared to the rest of the edges linked to a specific node, and is calculated as follows:
 
-$$\alpha_{ij} = 1 - (k - 1) \int_{0}^{p_{ij}}(1+x)^{k-2}dx,$$
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=\alpha_{ij}&space;=&space;1&space;-&space;(k&space;-&space;1)&space;\int_{0}^{p_{ij}}(1&plus;x)^{k-2}dx" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\alpha_{ij}&space;=&space;1&space;-&space;(k&space;-&space;1)&space;\int_{0}^{p_{ij}}(1&plus;x)^{k-2}dx" title="\alpha_{ij} = 1 - (k - 1) \int_{0}^{p_{ij}}(1+x)^{k-2}dx" /></a>
-
 <img src="https://latex.codecogs.com/gif.latex?\alpha_{ij}&space;=&space;1&space;-&space;(k&space;-&space;1)&space;\int_{0}^{p_{ij}}(1&plus;x)^{k-2}dx" title="\alpha_{ij} = 1 - (k - 1) \int_{0}^{p_{ij}}(1+x)^{k-2}dx" />
 
 where k is degree, x is the edge weight and <img src="https://latex.codecogs.com/gif.latex?p_{ij}" title="p_{ij}" /> is the relative weight of the edge out of the total edge weights for that given node.
